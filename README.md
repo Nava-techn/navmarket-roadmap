@@ -7,4 +7,6 @@ Ma progression réelle sur un parcours DevOps / Cloud AWS de 24 semaines.
 
 Chaque élément validé affiche sa date de validation.
 
-**Voir la progression : https://github.com/Nava-techn/navmarket-roadmap**
+**Voir la progression : https://nava-techn.github.io/navmarket-roadmap/**
+
+https://github.com/Nava-techn/navmarket-roadmap**
