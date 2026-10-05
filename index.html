@@ -2,7 +2,7 @@
 <html lang="fr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parcours DevOps / Cloud AWS – NavMarket Ops</title>
+<title>Parcours DevOps / Cloud AWS - NavMarket Ops</title>
 <meta name="description" content="Progression réelle d'un parcours DevOps / Cloud AWS : formation et réalisations sur le projet NavMarket.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
@@ -30,7 +30,7 @@ a{color:var(--learn)}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px}
 .eyebrow{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.sub{color:var(--muted);margin:6px 0 0;max-width:72ch}
+.sub{color:var(--muted);margin:6px 0 0;max-width:none}
 .links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:.95rem}
 .profile-edit{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px}
 .profile-edit label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
@@ -106,6 +106,12 @@ body[data-view="F"] .wkbtn .r, body[data-view="R"] .wkbtn .f{opacity:.25}
 footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
 footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
 [hidden]{display:none!important}
+.quicklinks{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:10px}
+.quicklinks .break{flex-basis:100%;height:0}
+.links{gap:12px;margin-top:12px}
+.quicklinks a,.links a{font-weight:600;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);border-radius:6px;padding:4px 10px;font-size:.88rem;line-height:1}
+.quicklinks a:hover,.links a:hover{background:var(--chip);border-color:var(--muted)}
+.quicklinks a:active,.links a:active{background:var(--line)}
 @media (max-width:760px){
   .week, body[data-view="F"] .week, body[data-view="R"] .week{grid-template-columns:minmax(0,1fr)}
   .week>div+div{border-left:0;border-top:1px solid var(--line)}
@@ -113,7 +119,7 @@ footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
 </style>
 </head>
 <body>
-<script type="application/json" id="state">{"profile":{"name":"NAGUE Valdes","headline":"Ingénieur Data - DataOPS - DevOps/Cloud","github":"https://github.com/Nava-techn/navmarket-roadmap","linkedin":"www.linkedin.com/in/valdes-nague"},"done":{"f1_1":"2026-10-04"},"updatedAt":"2026-10-05T05:52:14.046Z"}</script>
+<script type="application/json" id="state">{"profile":{"name":"NAGUE Valdes","headline":"Ingénieur Data - DataOPS - DevOps/Cloud","github":"https://github.com/Nava-techn/navmarket-roadmap","linkedin":"https://www.linkedin.com/in/valdes-nague/"},"done":{"f1_1":"2026-10-04"},"updatedAt":"2026-10-05T05:52:14.046Z"}</script>
 <div class="wrap">
   <header>
     <div class="eyebrow">Parcours DevOps / Cloud AWS · projet NavMarket</div>
@@ -122,6 +128,10 @@ footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
     <div class="links" id="pLinks"></div>
     <p class="sub">Progression réelle sur 24 séances : à gauche la <strong>formation</strong>, à droite les <strong>réalisations</strong> sur NavMarket, une boutique en ligne fictive (produits de chez Navatech) dont je construis et j'exploite toute la plateforme, d'un serveur Linux jusqu'à Kubernetes sur AWS. Chaque élément validé porte sa date.</p>
     <p class="sub">Poste de travail : <strong>Ubuntu 26.04 LTS en système principal</strong> (dual boot avec Windows 11). Je travaille au quotidien sous Linux, comme les serveurs que j'administre, et Docker et Kubernetes tournent en natif, sans couche de virtualisation.</p>
+    <nav class="quicklinks" aria-label="Liens rapides">
+      <a href="https://nava-techn.github.io/navmarket-roadmap/guide_bases_linux_complet">Mon guide complet sur les bases de Linux</a>
+      <a href="https://nava-techn.github.io/navmarket-roadmap/Les_fondations_de_linformatique_du_materiel_au_cloud.pdf">Cours : les fondations de l'informatique, du premier ordinateur au cloud (PDF)</a>
+    </nav>
     <div class="profile-edit" id="profileEdit" hidden="">
       <label for="inName">Nom affiché<input id="inName" type="text" autocomplete="name"></label>
       <label for="inHead">Accroche<input id="inHead" type="text"></label>
@@ -301,7 +311,7 @@ function profile(){
   $("pHead").textContent=p.headline||"";
   const L=$("pLinks");L.textContent="";
   [["GitHub",p.github],["LinkedIn",p.linkedin]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=el("a",null,n);a.href=u;a.rel="noopener";L.append(a)}});
-  document.title=(p.name?p.name+" – ":"")+"Parcours DevOps / Cloud AWS";
+  document.title=(p.name?p.name+" - ":"")+"Parcours DevOps / Cloud AWS";
 }
 function column(kind,list){
   const c=el("div",kind);
@@ -326,7 +336,7 @@ function render(){
   $("mF").textContent=nf+" / "+allF.length+" · "+Math.round(nf/allF.length*100)+" %";$("bF").style.width=(nf/allF.length*100)+"%";
   $("mR").textContent=nr+" / "+allR.length+" · "+Math.round(nr/allR.length*100)+" %";$("bR").style.width=(nr/allR.length*100)+"%";
   const cur=W.find(w=>cnt(w.F)<w.F.length||cnt(w.R)<w.R.length);
-  $("now").textContent=cur?("En cours : séance "+cur.n+" – "+cur.t+"."):"Parcours terminé.";
+  $("now").textContent=cur?("En cours : séance "+cur.n+" - "+cur.t+"."):"Parcours terminé.";
   const certs=$("certs");certs.textContent="";
   CERTS.forEach(c=>{const d=state.done[c[0]];const x=el("div","cert"+(d?" ok":""));x.append(el("b",null,c[1]),el("span",null,c[2]),el("span","st",d?"Obtenue le "+fr(d):"À venir"));certs.append(x)});
   const acq=$("acq");acq.textContent="";const seen=new Set();
@@ -344,7 +354,7 @@ function render(){
   PH.forEach(p=>{
     const sec=el("section","phase");const ws=W.filter(w=>w.n>=p[1]&&w.n<=p[2]);
     const pf=[],pr=[];ws.forEach(w=>{pf.push(...w.F);pr.push(...w.R)});
-    const hd=el("div","phase-h");hd.append(el("h2",null,p[0]),el("span","mono","S"+p[1]+(p[2]>p[1]?"–"+p[2]:"")+" · formation "+cnt(pf)+"/"+pf.length+" · réalisation "+cnt(pr)+"/"+pr.length));sec.append(hd);
+    const hd=el("div","phase-h");hd.append(el("h2",null,p[0]),el("span","mono","S"+p[1]+(p[2]>p[1]?"-"+p[2]:"")+" · formation "+cnt(pf)+"/"+pf.length+" · réalisation "+cnt(pr)+"/"+pr.length));sec.append(hd);
     ws.forEach(w=>{
       const row=el("article","card week");row.id="w"+w.n;
       const m=el("div","meta");m.append(el("div","wn","SÉANCE "+w.n),el("h3",null,w.t));
