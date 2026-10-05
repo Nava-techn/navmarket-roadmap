@@ -265,7 +265,8 @@ let local=null;try{local=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}
 if(local&&local.updatedAt&&(!embedded.updatedAt||local.updatedAt>embedded.updatedAt))state=local;
 state.profile=state.profile||{};state.done=state.done||{};
 const isLocal=location.protocol==="file:";
-let edit=isLocal||location.hash==="#edition";let noAsk=false;
+let edit=isLocal;let noAsk=false; //Le mode édition ne s'active que si la page est ouverte depuis votre PC.
+//||location.hash==="#edition" pour la modification partout, mais je préfère que ce soit volontaire
 const canFS=typeof window.showSaveFilePicker==="function";
 let fileHandle=null,lastSaved="",saveErr="";
 function idb(){return new Promise((res,rej)=>{const r=indexedDB.open("navmarket-roadmap",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
@@ -363,7 +364,7 @@ function render(){
     root.append(sec)});
   const u=state.updatedAt?new Date(state.updatedAt):null;
   $("updated").textContent=u?("Dernière mise à jour : "+u.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})):"";
-  $("editbar").hidden=!edit;$("profileEdit").hidden=!edit;$("btnEdit").hidden=edit;statusMsg();
+  $("editbar").hidden=!edit;$("profileEdit").hidden=!edit;$("btnEdit").hidden=edit||!isLocal;;statusMsg();//Le bouton « Mode édition » est caché sur le site en ligne sinon mettre juste $("btnEdit").hidden=edit; pour modif locale et en ligne.
   document.body.dataset.view=view;["B","F","R"].forEach(v=>$("v-"+v).setAttribute("aria-pressed",String(v===view)));
 }
 function setEdit(v){edit=v;if(!v)window.scrollTo(0,0);
