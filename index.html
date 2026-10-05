@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parcours DevOps / Cloud AWS – NavMarket Ops</title>
+<meta name="description" content="Progression réelle d'un parcours DevOps / Cloud AWS : formation et réalisations sur le projet NavMarket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
+<style>
+/* Layout: profile header, summary (progress, certifications, tools practiced, 24-séance strip), then one row per séance: séance meta + tools | Formation | Réalisation */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#15202b; --muted:#5b6876; --line:#dbe1e7;
+  --learn:#1d5fd1; --learn-soft:#e3ecfb; --build:#0b7a6a; --build-soft:#dcf2ee;
+  --good:#17804d; --good-soft:#e2f3ea; --warn:#a15c00; --warn-soft:#fbf0dc; --chip:#eef1f4;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"Source Sans 3",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f151b; --surface:#16202a; --ink:#e6edf3; --muted:#93a1b0; --line:#273442;
+  --learn:#6ea3ff; --learn-soft:#1b2c47; --build:#3cc7b1; --build-soft:#123630;
+  --good:#4cc488; --good-soft:#15342a; --warn:#e3a54a; --warn-soft:#33270f; --chip:#1f2b37; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800}
+h2{font-size:1.2rem;font-weight:800}
+h3{font-size:1rem;font-weight:700}
+a{color:var(--learn)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.sub{color:var(--muted);margin:6px 0 0;max-width:72ch}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:.95rem}
+.profile-edit{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px}
+.profile-edit label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
+.profile-edit input{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+.summary{padding:20px;display:flex;flex-direction:column;gap:18px}
+.meters{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.meter{display:flex;flex-direction:column;gap:6px}
+.meter .lab{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.meter .lab b{font-family:var(--f-display);font-size:1.05rem}
+.meter .lab span{font-size:.9rem;color:var(--muted)}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:99px}
+.learn .bar>i{background:var(--learn)} .build .bar>i{background:var(--build)}
+.learn .lab b{color:var(--learn)} .build .lab b{color:var(--build)}
+.now{font-size:.95rem}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cert{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;display:flex;flex-direction:column;gap:2px}
+.cert b{font-family:var(--f-mono);font-size:.8rem}
+.cert .st{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cert.ok{border-color:var(--good);background:var(--good-soft)} .cert.ok .st{color:var(--good);font-weight:600}
+.block-h{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+.tools{display:flex;flex-wrap:wrap;gap:4px}
+.tools span{font-family:var(--f-mono);font-size:.72rem;background:var(--chip);border-radius:4px;padding:1px 6px;color:var(--ink)}
+.tools.acq span{background:var(--build-soft)}
+.strip-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.legend{display:flex;gap:12px;align-items:center}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:6px;margin-top:6px}
+.wkbtn{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 2px;border-radius:6px}
+.wkbtn:hover{background:var(--bg)} .wkbtn:focus-visible{outline:2px solid var(--learn);outline-offset:1px}
+.wkbtn .n{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.wkbtn .pair{display:flex;gap:2px;height:36px;align-items:flex-end}
+.wkbtn .col{width:9px;height:100%;background:var(--line);border-radius:2px;position:relative;overflow:hidden}
+.wkbtn .col i{position:absolute;left:0;right:0;bottom:0;border-radius:2px}
+.wkbtn .f i{background:var(--learn)} .wkbtn .r i{background:var(--build)}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{all:unset;cursor:pointer;padding:7px 14px;font-size:.9rem;color:var(--muted)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);font-weight:600}
+.seg button:focus-visible{outline:2px solid var(--learn);outline-offset:-2px}
+.btn{font:inherit;font-size:.9rem;cursor:pointer;border-radius:8px;padding:7px 14px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.primary{background:var(--build);border-color:var(--build);color:#fff;font-weight:600}
+.btn:focus-visible{outline:2px solid var(--learn);outline-offset:2px}
+.editbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 16px;border:1px solid var(--warn);background:var(--warn-soft);border-radius:10px;font-size:.92rem}
+.editbar p{margin:0;flex:1 1 280px}
+.editbar.ok{border-color:var(--good);background:var(--good-soft)}
+.phase{display:flex;flex-direction:column;gap:10px}
+.phase-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-top:8px}
+.phase-h .mono{font-size:.85rem;color:var(--muted)}
+.week{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1fr);overflow:hidden;scroll-margin-top:12px}
+.week>div{padding:14px 16px;min-width:0}
+.week>div+div{border-left:1px solid var(--line)}
+.meta .wn{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);letter-spacing:.04em}
+.meta h3{margin:2px 0 10px}
+.colh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.F .colh{color:var(--learn)} .R .colh{color:var(--build)}
+.colh .mono{text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)}
+.F{background:linear-gradient(var(--learn-soft),var(--learn-soft)) top/100% 3px no-repeat}
+.R{background:linear-gradient(var(--build-soft),var(--build-soft)) top/100% 3px no-repeat}
+.item{display:flex;gap:9px;align-items:flex-start;padding:4px 6px;border-radius:6px;font-size:.95rem;width:100%;text-align:left;font-family:inherit;color:inherit;background:none;border:0}
+button.item{cursor:pointer} button.item:hover{background:var(--bg)}
+button.item:focus-visible{outline:2px solid var(--learn);outline-offset:1px}
+.mark{flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:12px;line-height:1;color:#fff}
+.F .done .mark{background:var(--learn);border-color:var(--learn)} .R .done .mark{background:var(--build);border-color:var(--build)}
+.item .txt{flex:1;min-width:0}
+.item .date{display:block;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.tag{display:inline-block;margin-left:6px;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:0 5px;border-radius:4px;vertical-align:1px}
+.tag.cert{color:var(--good);background:var(--good-soft)} .tag.panne{color:var(--warn);border:1px solid var(--warn)}
+body[data-view="F"] .week .R, body[data-view="R"] .week .F{display:none}
+body[data-view="F"] .week, body[data-view="R"] .week{grid-template-columns:200px minmax(0,1fr)}
+body[data-view="F"] .wkbtn .r, body[data-view="R"] .wkbtn .f{opacity:.25}
+footer{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
+[hidden]{display:none!important}
+@media (max-width:760px){
+  .week, body[data-view="F"] .week, body[data-view="R"] .week{grid-template-columns:minmax(0,1fr)}
+  .week>div+div{border-left:0;border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+<script type="application/json" id="state">{"profile":{"name":"NAGUE Valdes","headline":"Ingénieur Data - DataOPS - DevOps/Cloud","github":"https://github.com/Nava-techn/navmarket-roadmap","linkedin":"www.linkedin.com/in/valdes-nague"},"done":{"f1_1":"2026-10-04"},"updatedAt":"2026-10-05T05:52:14.046Z"}</script>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Parcours DevOps / Cloud AWS · projet NavMarket</div>
+    <h1 id="pName">Parcours DevOps / Cloud AWS</h1>
+    <p class="sub" id="pHead"></p>
+    <div class="links" id="pLinks"></div>
+    <p class="sub">Progression réelle sur 24 séances : à gauche la <strong>formation</strong>, à droite les <strong>réalisations</strong> sur NavMarket, une boutique en ligne fictive (produits de chez Navatech) dont je construis et j'exploite toute la plateforme, d'un serveur Linux jusqu'à Kubernetes sur AWS. Chaque élément validé porte sa date.</p>
+    <p class="sub">Poste de travail : <strong>Ubuntu 26.04 LTS en système principal</strong> (dual boot avec Windows 11). Je travaille au quotidien sous Linux, comme les serveurs que j'administre, et Docker et Kubernetes tournent en natif, sans couche de virtualisation.</p>
+    <div class="profile-edit" id="profileEdit" hidden="">
+      <label for="inName">Nom affiché<input id="inName" type="text" autocomplete="name"></label>
+      <label for="inHead">Accroche<input id="inHead" type="text"></label>
+      <label for="inGh">Lien GitHub<input id="inGh" type="url" placeholder="https://github.com/…"></label>
+      <label for="inLi">Lien LinkedIn<input id="inLi" type="url" placeholder="https://www.linkedin.com/in/…"></label>
+    </div>
+  </header>
+
+  <div class="editbar" id="editbar" hidden="">
+    <p id="editMsg"></p>
+    <button class="btn primary" type="button" id="btnSave">Enregistrer dans le fichier</button>
+    <button class="btn" type="button" id="btnDl">Télécharger une copie</button>
+    <button class="btn" type="button" id="btnView">Aperçu recruteur</button>
+  </div>
+
+  <section class="card summary" aria-label="Progression">
+    <div class="meters">
+      <div class="meter learn"><div class="lab"><b>Formation</b><span class="mono" id="mF"></span></div><div class="bar"><i id="bF"></i></div></div>
+      <div class="meter build"><div class="lab"><b>Réalisation</b><span class="mono" id="mR"></span></div><div class="bar"><i id="bR"></i></div></div>
+    </div>
+    <div class="now" id="now"></div>
+    <div><div class="block-h">Certifications</div><div class="certs" id="certs"></div></div>
+    <div><div class="block-h">Outils déjà pratiqués en réalisation</div><div class="tools acq" id="acq"></div></div>
+    <div>
+      <div class="strip-h"><span>Les 24 séances d'un coup d'œil (clique pour y aller)</span><span class="legend"><span><i style="background:var(--learn)"></i>Formation</span><span><i style="background:var(--build)"></i>Réalisation</span></span></div>
+      <div class="strip" id="strip"></div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Affichage">
+      <button type="button" id="v-B" aria-pressed="true">Les deux</button>
+      <button type="button" id="v-F" aria-pressed="false">Formation</button>
+      <button type="button" id="v-R" aria-pressed="false">Réalisation</button>
+    </div>
+  </div>
+
+  <div id="phases" style="display:flex;flex-direction:column;gap:18px"></div>
+
+  <footer>
+    <span id="updated"></span>
+    <button class="btn" type="button" id="btnEdit">Mode édition</button>
+  </footer>
+</div>
+<script>
+(function(){
+const PH=[
+ ["Fondations",1,8],["App NavMarket",9,10],["Docker & CI/CD",11,12],["AWS",13,16],["Infrastructure as Code",17,18],["Kubernetes",19,21],["Observabilité, projet final & emploi",22,24]
+];
+const W=[
+ {n:1,t:"Linux 1 : utiliser",tools:["Ubuntu 26.04 LTS","Ubuntu Server","Oracle Cloud","Bash","nano","vim","apt"],
+  F:[["f1_1","Poste de travail Linux : Ubuntu 26.04 LTS installé en OS principal (dual boot), plutôt qu'une VM VirtualBox ou VMware, pour travailler sous Linux au quotidien"],["f1_2","Arborescence (/etc, /var, /home), navigation, fichiers"],["f1_3","Éditeurs nano puis vim"],["f1_4","Permissions, utilisateurs, groupes, sudo, paquets apt"],["f1_5","Créer une VM gratuite Oracle Cloud Always Free (ou Cloudflare Tunnel)"]],
+  R:[["s1_1","S1.1 Premier serveur navmarket-srv01 à jour"],["s1_2","S1.2 Comptes alice, bob, chloe et droits sur /srv/navmarket"],["s1_3","S1.3 La vitrine NavMarket servie par Nginx"],["s1_4","S1.4 Bandit niveaux 0 à 10"],["s1_5","S1.5 Vitrine en ligne sur mon VPS public"]]},
+ {n:2,t:"Linux 2 : administrer",tools:["systemd","journalctl","OpenSSH","cron","lsblk","grep","awk"],
+  F:[["f2_1","Processus et signaux (ps, top, kill)"],["f2_2","Services systemd et journaux journalctl"],["f2_3","SSH et clés, cron"],["f2_4","Disques : lsblk, df, du, mount, fstab"],["f2_5","Pipes, grep, find, sed, awk"],["f2_6","Lire /var/log/auth.log"]],
+  R:[["s2_1","S2.1 Accès SSH par clé uniquement"],["s2_2","S2.2 Service systemd qui redémarre seul"],["s2_3","S2.3 Sauvegarde nocturne cron, 7 jours gardés"],["s2_4","S2.4 Disque ajouté, monté, rempli puis diagnostiqué"],["s2_5","S2.5 Top IP et 404 dans les logs en une commande"],["s2_6","S2.6 Top 10 des IP qui attaquent mon VPS en SSH"],["s2_x","Config Nginx illisible","panne"]]},
+ {n:3,t:"Réseau 1 : les paquets",tools:["ip","ipcalc","tcpdump","Wireshark","nftables","traceroute"],
+  F:[["f3_1","Modèles OSI et TCP/IP"],["f3_2","MAC, IP, ARP, ICMP"],["f3_3","Masques, CIDR, calcul de sous-réseaux"],["f3_4","Routage et passerelle, TCP vs UDP, ports"]],
+  R:[["s3_1","S3.1 Plan d'adressage 10.10.0.0/16"],["s3_2","S3.2 Routeur Linux entre 2 réseaux"],["s3_3","S3.3 Capture annotée (ARP, ICMP, TCP)"],["s3_4","S3.4 NAT : le réseau privé sort sur Internet"]]},
+ {n:4,t:"Réseau 2 : les services",tools:["dnsmasq","bind9","OpenSSL","Nginx","ufw","nmap","DuckDNS","certbot","fail2ban"],
+  F:[["f4_1","DNS, DHCP, NAT"],["f4_2","HTTP/HTTPS, TLS et certificats"],["f4_3","Pare-feu : ufw, nftables"],["f4_4","Proxy et répartition de charge"],["f4_5","Diagnostic : dig, curl -v, ss"],["f4_6","Let's Encrypt, certbot, fail2ban"]],
+  R:[["s4_1","S4.1 DNS interne navmarket.lan"],["s4_2","S4.2 DHCP automatique"],["s4_3","S4.3 HTTPS avec ma propre autorité"],["s4_4","S4.4 Pare-feu : seuls 22, 80, 443"],["s4_5","S4.5 Reverse proxy sur 2 serveurs web"],["s4_6","S4.6 Vrai domaine + HTTPS Let's Encrypt + fail2ban"],["s4_x","Nom qui ne résout plus, mauvaise passerelle","panne"]]},
+ {n:5,t:"Programmation 1",tools:["Bash","shellcheck","Python 3"],
+  F:[["f5_1","Bash : variables, conditions, boucles"],["f5_2","Bash : fonctions, arguments, codes retour"],["f5_3","Python : types, listes, dictionnaires"],["f5_4","Python : fonctions, lecture/écriture de fichiers"]],
+  R:[["s5_1","S5.1 deploy-vitrine.sh idempotent, shellcheck propre"],["s5_2","S5.2 Healthcheck Bash avec code retour"],["s5_3","S5.3 Inventaire produits Navatech en Python"],["s5_4","S5.4 Analyse de logs en Python, export JSON"]]},
+ {n:6,t:"Programmation 2",tools:["Python","venv","pip","requests","argparse","pytest","Exercism"],
+  F:[["f6_1","Modules, exceptions, classes (bases)"],["f6_2","venv et pip"],["f6_3","JSON et appels d'API avec requests"],["f6_4","Tests avec pytest"],["f6_5","Un exercice Exercism par jour"]],
+  R:[["s6_1","S6.1 Script d'appel d'API météo, erreurs gérées"],["s6_2","S6.2 Outil navctl (status, backup, logs)"],["s6_3","S6.3 Tests pytest, 80 % de couverture"],["s6_x","Données malformées gérées proprement","panne"]]},
+ {n:7,t:"Virtualisation",tools:["VirtualBox","Proxmox VE","KVM","Vagrant"],
+  F:[["f7_1","Hyperviseurs type 1 et type 2"],["f7_2","CPU, RAM, disques virtuels et snapshots"],["f7_3","Réseaux virtuels : NAT, bridge, host-only"],["f7_4","Automatiser des VM avec Vagrant"],["f7_5","Différence VM vs conteneur"]],
+  R:[["s7_1","S7.1 NAT, bridge, host-only comparés"],["s7_2","S7.2 Snapshot et restauration en 2 min"],["s7_3","S7.3 Proxmox : modèle et clones"],["s7_4","S7.4 Vagrant provisionne la vitrine"]]},
+ {n:8,t:"Git et homelab",tools:["Git","GitHub","Vagrant","Nginx","PostgreSQL"],
+  F:[["f8_1","Git : commits, branches, merge, rebase"],["f8_2","Conflits et pull requests"],["f8_3","Auto-test des 4 critères de fin des fondations"]],
+  R:[["s8_1","S8.1 Git : branches, PR, conflit résolu"],["s8_2","S8.2 Homelab NavMarket 4 VM en HTTPS"],["s8_3","S8.3 destroy puis up en moins de 15 min"],["s8_4","S8.4 Schéma réseau et README de lancement"],["s8_x","L'app ne joint plus la base","panne"]]},
+ {n:9,t:"App 1 : TypeScript + API NestJS",tools:["TypeScript","NestJS","Prisma","PostgreSQL","Swagger"],
+  F:[["f9_1","TypeScript : types, interfaces, async/await"],["f9_2","NestJS : modules, contrôleurs, services, validation"],["f9_3","Prisma : schéma, migrations, données de démo"],["f9_4","Configuration par variables d'environnement (12-factor)"]],
+  R:[["s9_1","S9.1 API NestJS : products, orders, /health"],["s9_2","S9.2 PostgreSQL + migrations Prisma, données Navatech"],["s9_3","S9.3 .env.example documenté, aucun secret dans le code"]]},
+ {n:10,t:"App 2 : front Next.js",tools:["Next.js","React","ESLint","Jest","Make","Nginx"],
+  F:[["f10_1","Next.js : pages, composants, routage"],["f10_2","Appeler l'API depuis le front"],["f10_3","ESLint et tests Jest"],["f10_4","Nginx : / vers le front, /api vers l'API"]],
+  R:[["s10_1","S10.1 Vitrine réécrite en Next.js, catalogue depuis l'API"],["s10_2","S10.2 Panier et commande enregistrée en base"],["s10_3","S10.3 make test vert, couverture API ≥ 70 %"],["s10_4","S10.4 Boutique complète derrière Nginx en HTTPS"],["s10_x","API démarrée avant la base, migration oubliée","panne"]]},
+ {n:11,t:"Docker",tools:["Docker","Docker Compose","Node.js","GHCR"],
+  F:[["f11_1","Images vs conteneurs, commandes de base"],["f11_2","Dockerfile, couches, cache"],["f11_3","Volumes et réseaux"],["f11_4","Multi-étapes, non-root, registres"]],
+  R:[["s11_1","S11.1 Next.js et NestJS conteneurisés, non-root, < 250 Mo"],["s11_2","S11.2 docker compose up : toute la boutique sur mon PC"],["s11_3","S11.3 Images v1.0.0 sur GitHub Container Registry"],["s11_4","S11.4 La boutique en conteneurs sur mon VPS en HTTPS"],["s11_x","Conteneur qui redémarre en boucle","panne"]]},
+ {n:12,t:"CI/CD",tools:["GitHub Actions","Trivy","SSH","GHCR"],
+  F:[["f12_1","Workflows, jobs, déclencheurs"],["f12_2","Secrets, cache, matrices"],["f12_3","Déploiement continu par SSH"],["f12_4","Environnements, approbations, rollback"]],
+  R:[["s12_1","S12.1 CI : PR bloquée si un test casse"],["s12_2","S12.2 Scan Trivy dans le pipeline"],["s12_3","S12.3 Merge sur main déployé sur le VPS en < 10 min"],["s12_4","S12.4 Prod avec approbation et rollback"],["s12_j","Premières candidatures (5 par semaine)"]]},
+ {n:13,t:"AWS 1 : les bases",tools:["Console AWS","IAM","S3","CloudFront","Skill Builder"],
+  F:[["f13_1","Responsabilité partagée, régions et AZ"],["f13_2","Facturation, budgets, compte sécurisé"],["f13_3","Révision Cloud Practitioner"]],
+  R:[["s13_1","S13.1 Compte AWS sécurisé et alerte budget"],["s13_2","S13.2 Vitrine S3 + CloudFront"],["s13_c","AWS Cloud Practitioner (CLF-C02)","cert"]]},
+ {n:14,t:"AWS 2 : calcul et réseau",tools:["AWS CLI","EC2","VPC","IAM","Session Manager"],
+  F:[["f14_1","IAM : rôles, politiques, moindre privilège"],["f14_2","EC2, EBS, S3"],["f14_3","VPC, sous-réseaux, NAT, Security Groups, NACL"]],
+  R:[["s14_1","S14.1 EC2 lancée en CLI avec user-data"],["s14_2","S14.2 VPC NavMarket 2 AZ public/privé"],["s14_3","S14.3 Session Manager, port 22 fermé"]]},
+ {n:15,t:"AWS 3 : dispo et données",tools:["ELB","Auto Scaling","Route 53","RDS","Lambda","EventBridge","CloudWatch"],
+  F:[["f15_1","ELB, Auto Scaling, Route 53"],["f15_2","RDS et DynamoDB"],["f15_3","Lambda, SQS/SNS, CloudWatch"]],
+  R:[["s15_1","S15.1 ALB + Auto Scaling : instance tuée, site intact"],["s15_2","S15.2 RDS privé"],["s15_3","S15.3 Alerte météo en Lambda planifiée"]]},
+ {n:16,t:"AWS 4 : conteneurs + SAA",tools:["ECR","ECS Fargate","OIDC","Tutorials Dojo","Pricing Calculator"],
+  F:[["f16_1","ECR et ECS Fargate"],["f16_2","Connexion GitHub vers AWS par OIDC"],["f16_3","Examens blancs à 80 % et plus"]],
+  R:[["s16_1","S16.1 La boutique sur ECS Fargate + ALB + RDS"],["s16_2","S16.2 Pipeline S12 qui déploie sur AWS par OIDC"],["s16_3","S16.3 Production documentée et chiffrée"],["s16_x","ALB en 502 / 504","panne"],["s16_c","AWS Solutions Architect Associate (SAA-C03)","cert"]]},
+ {n:17,t:"Terraform",tools:["Terraform","S3 backend"],
+  F:[["f17_1","Providers, ressources, variables, outputs"],["f17_2","State et data sources"],["f17_3","Modules et backend distant"]],
+  R:[["s17_1","S17.1 Le VPC réécrit en Terraform"],["s17_2","S17.2 Modules, state S3, staging et prod"]]},
+ {n:18,t:"Terraform pro + Ansible",tools:["Terraform","GitHub Actions","Ansible"],
+  F:[["f18_1","Terraform dans la CI"],["f18_2","Révision Terraform Associate"],["f18_3","Ansible : inventaires, playbooks, rôles"]],
+  R:[["s18_1","S18.1 Terraform plan/apply dans la CI"],["s18_2","S18.2 Dérive détectée et corrigée"],["s18_3","S18.3 Homelab en playbooks Ansible idempotents"],["s18_c","HashiCorp Terraform Associate (004)","cert"]]},
+ {n:19,t:"Kubernetes 1",tools:["kind","kubectl","k6"],
+  F:[["f19_1","Architecture : control plane et nœuds"],["f19_2","Pods, Deployments, Services, Namespaces"],["f19_3","ConfigMaps, Secrets, probes, limites"],["f19_4","Ingress et HPA"]],
+  R:[["s19_1","S19.1 API + PostgreSQL sur kind"],["s19_2","S19.2 Probes, secrets, limites"],["s19_3","S19.3 Ingress + HPA sous charge k6"]]},
+ {n:20,t:"Kubernetes 2 : GitOps",tools:["Helm","Argo CD","Amazon EKS","Terraform"],
+  F:[["f20_1","Helm : charts et values"],["f20_2","GitOps et Argo CD"],["f20_3","Amazon EKS"]],
+  R:[["s20_1","S20.1 Chart Helm staging/prod"],["s20_2","S20.2 EKS + Argo CD en GitOps"]]},
+ {n:21,t:"Kubernetes 3 : admin + CKA",tools:["kubeadm","etcd","RBAC","NetworkPolicy"],
+  F:[["f21_1","Installation avec kubeadm"],["f21_2","RBAC et NetworkPolicies"],["f21_3","Sauvegarde etcd, mises à jour"],["f21_4","Simulateurs d'examen CKA"]],
+  R:[["s21_1","S21.1 Cluster kubeadm sur 3 VM Vagrant"],["s21_2","S21.2 RBAC, NetworkPolicy, sauvegarde etcd"],["s21_3","S21.3 10 pannes réparées en moins de 2 h"],["s21_c","Certified Kubernetes Administrator (CKA)","cert"]]},
+ {n:22,t:"Observabilité & sécurité",tools:["Prometheus","Grafana","Loki","Alertmanager","Checkov","gitleaks"],
+  F:[["f22_1","Les 4 signaux d'or"],["f22_2","Métriques, logs, traces"],["f22_3","Alerting utile"],["f22_4","DevSecOps : secrets et scans"]],
+  R:[["s22_1","S22.1 Dashboard Grafana 4 signaux d'or"],["s22_2","S22.2 Logs centralisés Loki"],["s22_3","S22.3 3 alertes déclenchées et reçues"],["s22_4","S22.4 Aucun secret en clair (gitleaks)"],["s22_j","Passer à 10 candidatures par semaine"]]},
+ {n:23,t:"Projet final",tools:["Terraform","EKS","Argo CD","Grafana"],
+  F:[["f23_1","Livre SRE de Google : chapitre postmortems"],["f23_2","Préparer une démo technique de 3 minutes"]],
+  R:[["s23_1","S23.1 Toute la plateforme reconstruite en un jour"],["s23_2","S23.2 Incident simulé + postmortem"],["s23_3","S23.3 Vidéo démo et README vitrine"]]},
+ {n:24,t:"Emploi",tools:["GitHub","LinkedIn","Réseau 3IL"],
+  F:[["f24_1","Questions d'entretien Linux, réseau, AWS, Kubernetes"],["f24_2","Concevoir une architecture au tableau"]],
+  R:[["s24_1","S24.1 GitHub, LinkedIn, CV relus"],["s24_2","S24.2 Entretien blanc de 45 min"],["s24_3","S24.3 Article « Comment j'ai construit NavMarket »"],["s24_j","Activer le réseau 3IL (alumni, entreprises de stage)"]]}
+];
+const CERTS=[["s13_c","CLF-C02","Cloud Practitioner"],["s16_c","SAA-C03","Solutions Architect"],["s18_c","TF-004","Terraform Associate"],["s21_c","CKA","Kubernetes Admin"]];
+
+const LS="navmarket-roadmap-v1";
+const embedded=(()=>{try{return JSON.parse(document.getElementById("state").textContent)}catch(e){return {profile:{},done:{},updatedAt:""}}})();
+const ORIGINAL="<!doctype html>\n"+document.documentElement.outerHTML;
+let state=JSON.parse(JSON.stringify(embedded));
+let local=null;try{local=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}
+if(local&&local.updatedAt&&(!embedded.updatedAt||local.updatedAt>embedded.updatedAt))state=local;
+state.profile=state.profile||{};state.done=state.done||{};
+const isLocal=location.protocol==="file:";
+let edit=isLocal||location.hash==="#edition";let noAsk=false;
+const canFS=typeof window.showSaveFilePicker==="function";
+let fileHandle=null,lastSaved="",saveErr="";
+function idb(){return new Promise((res,rej)=>{const r=indexedDB.open("navmarket-roadmap",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function idbGet(k){try{const db=await idb();return await new Promise(res=>{const q=db.transaction("kv").objectStore("kv").get(k);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null)})}catch(e){return null}}
+async function idbSet(k,v){try{const db=await idb();db.transaction("kv","readwrite").objectStore("kv").put(v,k)}catch(e){}}
+let view="B";
+const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const cnt=l=>l.filter(t=>state.done[t[0]]).length;
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const fr=d=>{if(!d)return"";const p=d.split("-");return p[2]+"/"+p[1]+"/"+p[0]};
+const pending=()=>JSON.stringify({p:state.profile,d:state.done})!==JSON.stringify({p:embedded.profile||{},d:embedded.done||{}});
+function persist(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(LS,JSON.stringify(state))}catch(e){}}
+function buildFile(){const json=JSON.stringify(state).replace(/</g,"\\u003c");return ORIGINAL.replace(/(<script type="application\/json" id="state">)[\s\S]*?(<\/script>)/,(m,a,b)=>a+json+b)}
+async function writeFile(ask){
+  saveErr="";
+  try{
+    if(!fileHandle&&ask){fileHandle=await window.showSaveFilePicker({suggestedName:"index.html",types:[{description:"Page HTML",accept:{"text/html":[".html"]}}]});await idbSet("handle",fileHandle)}
+    if(!fileHandle)return false;
+    let perm=await fileHandle.queryPermission({mode:"readwrite"});
+    if(perm!=="granted"&&ask)perm=await fileHandle.requestPermission({mode:"readwrite"});
+    if(perm!=="granted")return false;
+    const w=await fileHandle.createWritable();await w.write(buildFile());await w.close();
+    embedded.profile=JSON.parse(JSON.stringify(state.profile));embedded.done=JSON.parse(JSON.stringify(state.done));embedded.updatedAt=state.updatedAt;
+    lastSaved=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});return true;
+  }catch(e){if(e&&e.name==="AbortError")noAsk=true;else saveErr="L'enregistrement a échoué ("+(e.message||e.name)+").";return false}
+  finally{statusMsg()}
+}
+function toggle(id){if(state.done[id])delete state.done[id];else state.done[id]=today();persist();render();if(canFS)writeFile(!noAsk||!!fileHandle)}
+function statusMsg(){
+  const bar=$("editbar"),m=$("editMsg");if(!bar)return;
+  const p=pending();bar.classList.toggle("ok",!p&&!saveErr);
+  $("btnSave").hidden=!canFS;
+  if(saveErr)m.textContent=saveErr+" Réessaie avec « Enregistrer dans le fichier ».";
+  else if(!canFS)m.textContent=p?"Ce navigateur ne peut pas écrire dans le fichier : clique sur « Télécharger une copie » et remplace ton index.html (ou ouvre la page avec Chrome ou Edge pour l'enregistrement automatique).":"Clique sur un élément pour le valider ou l'annuler.";
+  else if(!p)m.textContent=lastSaved?"Enregistré dans le fichier à "+lastSaved+". À la prochaine ouverture, ta progression sera là.":"Clique sur un élément pour le valider ou l'annuler : il s'enregistre directement dans ce fichier.";
+  else if(fileHandle)m.textContent="Modifications pas encore écrites dans le fichier : clique sur « Enregistrer dans le fichier ».";
+  else m.textContent="Première fois : clique sur « Enregistrer dans le fichier » et choisis ce même index.html (remplacer). Ensuite, chaque coche s'enregistre toute seule.";
+}
+function profile(){
+  const p=state.profile;
+  $("pName").textContent=p.name||"Parcours DevOps / Cloud AWS";
+  $("pHead").textContent=p.headline||"";
+  const L=$("pLinks");L.textContent="";
+  [["GitHub",p.github],["LinkedIn",p.linkedin]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=el("a",null,n);a.href=u;a.rel="noopener";L.append(a)}});
+  document.title=(p.name?p.name+" – ":"")+"Parcours DevOps / Cloud AWS";
+}
+function column(kind,list){
+  const c=el("div",kind);
+  const h=el("div","colh");h.append(el("span",null,kind==="F"?"Formation":"Réalisation"),el("span","mono",cnt(list)+"/"+list.length));c.append(h);
+  list.forEach(t=>{
+    const d=state.done[t[0]];
+    const it=el(edit?"button":"div","item"+(d?" done":""));
+    if(edit){it.type="button";it.setAttribute("aria-pressed",String(!!d));it.addEventListener("click",()=>toggle(t[0]))}
+    const mk=el("span","mark",d?"✓":"");mk.setAttribute("aria-hidden","true");
+    const tx=el("span","txt",t[2]==="panne"?"Panne : "+t[1]:t[1]);
+    if(t[2]==="cert")tx.append(el("span","tag cert","certif"));
+    if(t[2]==="panne")tx.append(el("span","tag panne","provoquée et réparée"));
+    if(d)tx.append(el("span","date","validé le "+fr(d)));
+    else{const sr=el("span",null," (à faire)");sr.style.cssText="position:absolute;left:-9999px";tx.append(sr)}
+    it.append(mk,tx);c.append(it)});
+  return c;
+}
+function render(){
+  profile();
+  const allF=[],allR=[];W.forEach(w=>{allF.push(...w.F);allR.push(...w.R)});
+  const nf=cnt(allF),nr=cnt(allR);
+  $("mF").textContent=nf+" / "+allF.length+" · "+Math.round(nf/allF.length*100)+" %";$("bF").style.width=(nf/allF.length*100)+"%";
+  $("mR").textContent=nr+" / "+allR.length+" · "+Math.round(nr/allR.length*100)+" %";$("bR").style.width=(nr/allR.length*100)+"%";
+  const cur=W.find(w=>cnt(w.F)<w.F.length||cnt(w.R)<w.R.length);
+  $("now").textContent=cur?("En cours : séance "+cur.n+" – "+cur.t+"."):"Parcours terminé.";
+  const certs=$("certs");certs.textContent="";
+  CERTS.forEach(c=>{const d=state.done[c[0]];const x=el("div","cert"+(d?" ok":""));x.append(el("b",null,c[1]),el("span",null,c[2]),el("span","st",d?"Obtenue le "+fr(d):"À venir"));certs.append(x)});
+  const acq=$("acq");acq.textContent="";const seen=new Set();
+  W.forEach(w=>{if(cnt(w.R)>0)w.tools.forEach(t=>{if(!seen.has(t)){seen.add(t);acq.append(el("span",null,t))}})});
+  if(!seen.size)acq.append(el("span",null,"Premiers outils à venir"));
+  const strip=$("strip");strip.textContent="";
+  W.forEach(w=>{const b=el("button","wkbtn");b.type="button";
+    const pf=Math.round(cnt(w.F)/w.F.length*100),pr=Math.round(cnt(w.R)/w.R.length*100);
+    b.setAttribute("aria-label","Séance "+w.n+" : formation "+pf+" %, réalisation "+pr+" %");
+    const pair=el("span","pair");const f=el("span","col f"),r=el("span","col r");const fi=el("i"),ri=el("i");fi.style.height=pf+"%";ri.style.height=pr+"%";f.append(fi);r.append(ri);pair.append(f,r);
+    b.append(pair,el("span","n","S"+w.n));
+    b.addEventListener("click",()=>{const t=$("w"+w.n);if(t)t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+    strip.append(b)});
+  const root=$("phases");root.textContent="";
+  PH.forEach(p=>{
+    const sec=el("section","phase");const ws=W.filter(w=>w.n>=p[1]&&w.n<=p[2]);
+    const pf=[],pr=[];ws.forEach(w=>{pf.push(...w.F);pr.push(...w.R)});
+    const hd=el("div","phase-h");hd.append(el("h2",null,p[0]),el("span","mono","S"+p[1]+(p[2]>p[1]?"–"+p[2]:"")+" · formation "+cnt(pf)+"/"+pf.length+" · réalisation "+cnt(pr)+"/"+pr.length));sec.append(hd);
+    ws.forEach(w=>{
+      const row=el("article","card week");row.id="w"+w.n;
+      const m=el("div","meta");m.append(el("div","wn","SÉANCE "+w.n),el("h3",null,w.t));
+      const tl=el("div","tools");w.tools.forEach(x=>tl.append(el("span",null,x)));m.append(tl);
+      row.append(m,column("F",w.F),column("R",w.R));sec.append(row)});
+    root.append(sec)});
+  const u=state.updatedAt?new Date(state.updatedAt):null;
+  $("updated").textContent=u?("Dernière mise à jour : "+u.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})):"";
+  $("editbar").hidden=!edit;$("profileEdit").hidden=!edit;$("btnEdit").hidden=edit;statusMsg();
+  document.body.dataset.view=view;["B","F","R"].forEach(v=>$("v-"+v).setAttribute("aria-pressed",String(v===view)));
+}
+function setEdit(v){edit=v;if(!v)window.scrollTo(0,0);
+  if(v){const p=state.profile;$("inName").value=p.name||"";$("inHead").value=p.headline||"";$("inGh").value=p.github||"";$("inLi").value=p.linkedin||""}
+  render()}
+[["inName","name"],["inHead","headline"],["inGh","github"],["inLi","linkedin"]].forEach(([id,k])=>$(id).addEventListener("input",e=>{state.profile[k]=e.target.value.trim();persist();profile();statusMsg()}));
+["inName","inHead","inGh","inLi"].forEach(id=>$(id).addEventListener("change",()=>{if(canFS&&fileHandle)writeFile(true)}));
+["B","F","R"].forEach(v=>$("v-"+v).addEventListener("click",()=>{view=v;render()}));
+$("btnEdit").addEventListener("click",()=>setEdit(true));
+$("btnView").addEventListener("click",()=>setEdit(false));
+$("btnSave").addEventListener("click",()=>{if(!state.updatedAt)state.updatedAt=new Date().toISOString();writeFile(true)});
+$("btnDl").addEventListener("click",()=>{
+  if(!state.updatedAt)state.updatedAt=new Date().toISOString();
+  const blob=new Blob([buildFile()],{type:"text/html;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="index.html";document.body.append(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+  $("editMsg").textContent="Copie téléchargée. Remplace ton index.html par ce fichier.";
+});
+if(edit)setEdit(true);else render();
+if(canFS)idbGet("handle").then(h=>{if(h){fileHandle=h;statusMsg()}});
+})();
+</script></body></html>
