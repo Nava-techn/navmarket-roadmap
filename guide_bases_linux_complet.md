@@ -289,7 +289,6 @@ Toutes ces commandes doivent être tapées en **Mode Normal** (après avoir appu
 | **`Échap`** | Sortir du mode écriture pour exécuter des commandes |
 | **`:wq`** | Sauvegarder les modifications et fermer le fichier (*write and quit*) |
 | **`:q!`** | Fermer le fichier immédiatement **sans sauvegarder** (annuler tout) |
-
 | :w | Sauvegarder le fichier sans le fermer |
 | dd | Supprimer (couper) la ligne entière sous le curseur |
 | x | Supprimer le caractère unique situé sous le curseur |
