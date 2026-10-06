@@ -14,3 +14,5 @@ Every completed item shows the date it was completed.
 **My complete guide to Linux basics: https://nava-techn.github.io/navmarket-roadmap/linux_basics_complete_guide**
 
 **Course: the foundations of computing, from the first computers to the cloud: https://nava-techn.github.io/navmarket-roadmap/Foundations_of_computing_from_hardware_to_cloud.pdf**
+
+**Same course in French: https://nava-techn.github.io/navmarket-roadmap/Les_fondations_de_linformatique_du_materiel_au_cloud.pdf**
