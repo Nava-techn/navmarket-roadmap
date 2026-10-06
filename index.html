@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="fr"><head>
+<html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Parcours DevOps / Cloud AWS - NavMarket Ops</title>
-<meta name="description" content="Progression réelle d'un parcours DevOps / Cloud AWS : formation et réalisations sur le projet NavMarket.">
+<title>DevOps / AWS Cloud Learning Path - NavMarket Ops</title>
+<meta name="description" content="Real progress on a DevOps / AWS Cloud learning path: what I learn and the hands-on labs I build on the NavMarket project.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
 <style> 
-/* Layout: profile header, summary (progress, certifications, tools practiced, 24-séance strip), then one row per séance: séance meta + tools | Formation | Réalisation */
+/* Layout: profile header, summary (progress, certifications, tools practiced, 24-session strip), then one row per session: session meta + tools | Learning | Labs */
 :root{
   --bg:#f3f5f7; --surface:#ffffff; --ink:#15202b; --muted:#5b6876; --line:#dbe1e7;
   --learn:#1d5fd1; --learn-soft:#e3ecfb; --build:#0b7a6a; --build-soft:#dcf2ee;
@@ -99,7 +99,7 @@ button.item:focus-visible{outline:2px solid var(--learn);outline-offset:1px}
 .item .txt{flex:1;min-width:0}
 .item .date{display:block;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
 .tag{display:inline-block;margin-left:6px;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:0 5px;border-radius:4px;vertical-align:1px}
-.tag.cert{color:var(--good);background:var(--good-soft)} .tag.panne{color:var(--warn);border:1px solid var(--warn)}
+.tag.cert{color:var(--good);background:var(--good-soft)} .tag.incident{color:var(--warn);border:1px solid var(--warn)}
 body[data-view="F"] .week .R, body[data-view="R"] .week .F{display:none}
 body[data-view="F"] .week, body[data-view="R"] .week{grid-template-columns:200px minmax(0,1fr)}
 body[data-view="F"] .wkbtn .r, body[data-view="R"] .wkbtn .f{opacity:.25}
@@ -119,53 +119,53 @@ footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
 </style>
 </head>
 <body>
-<script type="application/json" id="state">{"profile":{"name":"NAGUE Valdes","headline":"Ingénieur Data - DataOPS - DevOps/Cloud","github":"https://github.com/Nava-techn/navmarket-roadmap","linkedin":"https://www.linkedin.com/in/valdes-nague/"},"done":{"f1_1":"2026-10-04","f1_2":"2026-10-06","f1_3":"2026-10-06","f1_4":"2026-10-06","f2_4":"2026-10-06","f2_3":"2026-10-06","f2_2":"2026-10-06","f2_1":"2026-10-06","f2_5":"2026-10-06","f2_6":"2026-10-06","f3_1":"2026-10-06","f3_3":"2026-10-06","f4_1":"2026-10-06","f4_2":"2026-10-06","f7_1":"2026-10-06","f7_2":"2026-10-06","f7_3":"2026-10-06","f7_5":"2026-10-06","f8_1":"2026-10-06","f8_2":"2026-10-06","f11_1":"2026-10-06","f11_2":"2026-10-06","f11_3":"2026-10-06","f19_2":"2026-10-06"},"updatedAt":"2026-10-06T19:37:47.067Z"}</script>
+<script type="application/json" id="state">{"profile":{"name":"NAGUE Valdes","headline":"Data Engineer - DataOps - DevOps/Cloud","github":"https://github.com/Nava-techn/navmarket-roadmap","linkedin":"https://www.linkedin.com/in/valdes-nague/"},"done":{"f1_1":"2026-10-04","f1_2":"2026-10-06","f1_3":"2026-10-06","f1_4":"2026-10-06","f2_4":"2026-10-06","f2_3":"2026-10-06","f2_2":"2026-10-06","f2_1":"2026-10-06","f2_5":"2026-10-06","f2_6":"2026-10-06","f3_1":"2026-10-06","f3_3":"2026-10-06","f4_1":"2026-10-06","f4_2":"2026-10-06","f7_1":"2026-10-06","f7_2":"2026-10-06","f7_3":"2026-10-06","f7_5":"2026-10-06","f8_1":"2026-10-06","f8_2":"2026-10-06","f11_1":"2026-10-06","f11_2":"2026-10-06","f11_3":"2026-10-06","f19_2":"2026-10-06"},"updatedAt":"2026-10-06T21:06:19.000Z"}</script>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Parcours DevOps / Cloud AWS · projet NavMarket</div>
-    <h1 id="pName">Parcours DevOps / Cloud AWS</h1>
+    <div class="eyebrow">DevOps / AWS Cloud learning path · NavMarket project</div>
+    <h1 id="pName">DevOps / AWS Cloud learning path</h1>
     <p class="sub" id="pHead"></p>
     <div class="links" id="pLinks"></div>
-    <p class="sub">Progression réelle sur 24 séances : à gauche la <strong>formation</strong>, à droite les <strong>réalisations</strong> sur NavMarket, une boutique en ligne fictive (produits de chez Navatech) dont je construis et j'exploite toute la plateforme, d'un serveur Linux jusqu'à Kubernetes sur AWS. Chaque élément validé porte sa date.</p>
-    <p class="sub">Poste de travail : <strong>Ubuntu 26.04 LTS en système principal</strong> (dual boot avec Windows 11). Je travaille au quotidien sous Linux, comme les serveurs que j'administre, et Docker et Kubernetes tournent en natif, sans couche de virtualisation.</p>
-    <nav class="quicklinks" aria-label="Liens rapides">
-      <a href="https://nava-techn.github.io/navmarket-roadmap/guide_bases_linux_complet" data-goatcounter-click="guide-linux">Mon guide complet sur les bases de Linux</a>
-      <a href="https://nava-techn.github.io/navmarket-roadmap/Les_fondations_de_linformatique_du_materiel_au_cloud.pdf" data-goatcounter-click="cours-pdf">Cours : les fondations de l'informatique, du premier ordinateur au cloud (PDF)</a>
+    <p class="sub">Real progress over 24 sessions: on the left, what I <strong>learn</strong>; on the right, the <strong>labs</strong> I build on NavMarket, a fictional online shop (selling Navatech products) whose entire platform I build and run, from a single Linux server all the way to Kubernetes on AWS. Every completed item shows its date.</p>
+    <p class="sub">Workstation: <strong>Ubuntu 26.04 LTS as my main OS</strong> (dual boot with Windows 11). I work on Linux every day, just like the servers I manage, and Docker and Kubernetes run natively, with no virtualization layer.</p>
+    <nav class="quicklinks" aria-label="Quick links">
+      <a href="https://nava-techn.github.io/navmarket-roadmap/linux_basics_complete_guide" data-goatcounter-click="guide-linux">My complete guide to Linux basics</a>
+      <a href="https://nava-techn.github.io/navmarket-roadmap/Foundations_of_computing_from_hardware_to_cloud.pdf" data-goatcounter-click="course-pdf">Course: the foundations of computing, from hardware to the cloud (PDF)</a>
     </nav>
     <div class="profile-edit" id="profileEdit" hidden="">
-      <label for="inName">Nom affiché<input id="inName" type="text" autocomplete="name"></label>
-      <label for="inHead">Accroche<input id="inHead" type="text"></label>
-      <label for="inGh">Lien GitHub<input id="inGh" type="url" placeholder="https://github.com/…"></label>
-      <label for="inLi">Lien LinkedIn<input id="inLi" type="url" placeholder="https://www.linkedin.com/in/…"></label>
+      <label for="inName">Display name<input id="inName" type="text" autocomplete="name"></label>
+      <label for="inHead">Headline<input id="inHead" type="text"></label>
+      <label for="inGh">GitHub link<input id="inGh" type="url" placeholder="https://github.com/…"></label>
+      <label for="inLi">LinkedIn link<input id="inLi" type="url" placeholder="https://www.linkedin.com/in/…"></label>
     </div>
   </header>
 
   <div class="editbar" id="editbar" hidden="">
     <p id="editMsg"></p>
-    <button class="btn primary" type="button" id="btnSave">Enregistrer dans le fichier</button>
-    <button class="btn" type="button" id="btnDl">Télécharger une copie</button>
-    <button class="btn" type="button" id="btnView">Aperçu recruteur</button>
+    <button class="btn primary" type="button" id="btnSave">Save to file</button>
+    <button class="btn" type="button" id="btnDl">Download a copy</button>
+    <button class="btn" type="button" id="btnView">Recruiter view</button>
   </div>
 
-  <section class="card summary" aria-label="Progression">
+  <section class="card summary" aria-label="Progress">
     <div class="meters">
-      <div class="meter learn"><div class="lab"><b>Formation</b><span class="mono" id="mF"></span></div><div class="bar"><i id="bF"></i></div></div>
-      <div class="meter build"><div class="lab"><b>Réalisation</b><span class="mono" id="mR"></span></div><div class="bar"><i id="bR"></i></div></div>
+      <div class="meter learn"><div class="lab"><b>Learning</b><span class="mono" id="mF"></span></div><div class="bar"><i id="bF"></i></div></div>
+      <div class="meter build"><div class="lab"><b>Labs</b><span class="mono" id="mR"></span></div><div class="bar"><i id="bR"></i></div></div>
     </div>
     <div class="now" id="now"></div>
     <div><div class="block-h">Certifications</div><div class="certs" id="certs"></div></div>
-    <div><div class="block-h">Outils déjà pratiqués en réalisation</div><div class="tools acq" id="acq"></div></div>
+    <div><div class="block-h">Tools already used in labs</div><div class="tools acq" id="acq"></div></div>
     <div>
-      <div class="strip-h"><span>Les 24 séances d'un coup d'œil (clique pour y aller)</span><span class="legend"><span><i style="background:var(--learn)"></i>Formation</span><span><i style="background:var(--build)"></i>Réalisation</span></span></div>
+      <div class="strip-h"><span>All 24 sessions at a glance (click one to jump to it)</span><span class="legend"><span><i style="background:var(--learn)"></i>Learning</span><span><i style="background:var(--build)"></i>Labs</span></span></div>
       <div class="strip" id="strip"></div>
     </div>
   </section>
 
   <div class="toolbar">
-    <div class="seg" role="group" aria-label="Affichage">
-      <button type="button" id="v-B" aria-pressed="true">Les deux</button>
-      <button type="button" id="v-F" aria-pressed="false">Formation</button>
-      <button type="button" id="v-R" aria-pressed="false">Réalisation</button>
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="v-B" aria-pressed="true">Both</button>
+      <button type="button" id="v-F" aria-pressed="false">Learning</button>
+      <button type="button" id="v-R" aria-pressed="false">Labs</button>
     </div>
   </div>
 
@@ -173,87 +173,87 @@ footer .btn{align-self:flex-start;font-size:.8rem;padding:4px 10px}
 
   <footer>
     <span id="updated"></span>
-    <button class="btn" type="button" id="btnEdit">Mode édition</button>
+    <button class="btn" type="button" id="btnEdit">Edit mode</button>
   </footer>
 </div>
 <script>
 (function(){
 const PH=[
- ["Fondations",1,8],["App NavMarket",9,10],["Docker & CI/CD",11,12],["AWS",13,16],["Infrastructure as Code",17,18],["Kubernetes",19,21],["Observabilité, projet final & emploi",22,24]
+ ["Foundations",1,8],["NavMarket app",9,10],["Docker & CI/CD",11,12],["AWS",13,16],["Infrastructure as Code",17,18],["Kubernetes",19,21],["Observability, final project & job search",22,24]
 ];
 const W=[
- {n:1,t:"Linux 1 : utiliser",tools:["Ubuntu 26.04 LTS","Ubuntu Server","Oracle Cloud","Bash","nano","vim","apt"],
-  F:[["f1_1","Poste de travail Linux : Ubuntu 26.04 LTS installé en OS principal (dual boot), plutôt qu'une VM VirtualBox ou VMware, pour travailler sous Linux au quotidien"],["f1_2","Arborescence (/etc, /var, /home), navigation, fichiers"],["f1_3","Éditeurs nano puis vim"],["f1_4","Permissions, utilisateurs, groupes, sudo, paquets apt"],["f1_5","Créer une VM gratuite Oracle Cloud Always Free (ou Cloudflare Tunnel)"]],
-  R:[["s1_1","S1.1 Premier serveur navmarket-srv01 à jour"],["s1_2","S1.2 Comptes alice, bob, chloe et droits sur /srv/navmarket"],["s1_3","S1.3 La vitrine NavMarket servie par Nginx"],["s1_4","S1.4 Bandit niveaux 0 à 10"],["s1_5","S1.5 Vitrine en ligne sur mon VPS public"]]},
- {n:2,t:"Linux 2 : administrer",tools:["systemd","journalctl","OpenSSH","cron","lsblk","grep","awk"],
-  F:[["f2_1","Processus et signaux (ps, top, kill)"],["f2_2","Services systemd et journaux journalctl"],["f2_3","SSH et clés, cron"],["f2_4","Disques : lsblk, df, du, mount, fstab"],["f2_5","Pipes, grep, find, sed, awk"],["f2_6","Lire /var/log/auth.log"]],
-  R:[["s2_1","S2.1 Accès SSH par clé uniquement"],["s2_2","S2.2 Service systemd qui redémarre seul"],["s2_3","S2.3 Sauvegarde nocturne cron, 7 jours gardés"],["s2_4","S2.4 Disque ajouté, monté, rempli puis diagnostiqué"],["s2_5","S2.5 Top IP et 404 dans les logs en une commande"],["s2_6","S2.6 Top 10 des IP qui attaquent mon VPS en SSH"],["s2_x","Config Nginx illisible","panne"]]},
- {n:3,t:"Réseau 1 : les paquets",tools:["ip","ipcalc","tcpdump","Wireshark","nftables","traceroute"],
-  F:[["f3_1","Modèles OSI et TCP/IP"],["f3_2","MAC, IP, ARP, ICMP"],["f3_3","Masques, CIDR, calcul de sous-réseaux"],["f3_4","Routage et passerelle, TCP vs UDP, ports"]],
-  R:[["s3_1","S3.1 Plan d'adressage 10.10.0.0/16"],["s3_2","S3.2 Routeur Linux entre 2 réseaux"],["s3_3","S3.3 Capture annotée (ARP, ICMP, TCP)"],["s3_4","S3.4 NAT : le réseau privé sort sur Internet"]]},
- {n:4,t:"Réseau 2 : les services",tools:["dnsmasq","bind9","OpenSSL","Nginx","ufw","nmap","DuckDNS","certbot","fail2ban"],
-  F:[["f4_1","DNS, DHCP, NAT"],["f4_2","HTTP/HTTPS, TLS et certificats"],["f4_3","Pare-feu : ufw, nftables"],["f4_4","Proxy et répartition de charge"],["f4_5","Diagnostic : dig, curl -v, ss"],["f4_6","Let's Encrypt, certbot, fail2ban"]],
-  R:[["s4_1","S4.1 DNS interne navmarket.lan"],["s4_2","S4.2 DHCP automatique"],["s4_3","S4.3 HTTPS avec ma propre autorité"],["s4_4","S4.4 Pare-feu : seuls 22, 80, 443"],["s4_5","S4.5 Reverse proxy sur 2 serveurs web"],["s4_6","S4.6 Vrai domaine + HTTPS Let's Encrypt + fail2ban"],["s4_x","Nom qui ne résout plus, mauvaise passerelle","panne"]]},
- {n:5,t:"Programmation 1",tools:["Bash","shellcheck","Python 3"],
-  F:[["f5_1","Bash : variables, conditions, boucles"],["f5_2","Bash : fonctions, arguments, codes retour"],["f5_3","Python : types, listes, dictionnaires"],["f5_4","Python : fonctions, lecture/écriture de fichiers"]],
-  R:[["s5_1","S5.1 deploy-vitrine.sh idempotent, shellcheck propre"],["s5_2","S5.2 Healthcheck Bash avec code retour"],["s5_3","S5.3 Inventaire produits Navatech en Python"],["s5_4","S5.4 Analyse de logs en Python, export JSON"]]},
- {n:6,t:"Programmation 2",tools:["Python","venv","pip","requests","argparse","pytest","Exercism"],
-  F:[["f6_1","Modules, exceptions, classes (bases)"],["f6_2","venv et pip"],["f6_3","JSON et appels d'API avec requests"],["f6_4","Tests avec pytest"],["f6_5","Un exercice Exercism par jour"]],
-  R:[["s6_1","S6.1 Script d'appel d'API météo, erreurs gérées"],["s6_2","S6.2 Outil navctl (status, backup, logs)"],["s6_3","S6.3 Tests pytest, 80 % de couverture"],["s6_x","Données malformées gérées proprement","panne"]]},
- {n:7,t:"Virtualisation",tools:["VirtualBox","Proxmox VE","KVM","Vagrant"],
-  F:[["f7_1","Hyperviseurs type 1 et type 2"],["f7_2","CPU, RAM, disques virtuels et snapshots"],["f7_3","Réseaux virtuels : NAT, bridge, host-only"],["f7_4","Automatiser des VM avec Vagrant"],["f7_5","Différence VM vs conteneur"]],
-  R:[["s7_1","S7.1 NAT, bridge, host-only comparés"],["s7_2","S7.2 Snapshot et restauration en 2 min"],["s7_3","S7.3 Proxmox : modèle et clones"],["s7_4","S7.4 Vagrant provisionne la vitrine"]]},
- {n:8,t:"Git et homelab",tools:["Git","GitHub","Vagrant","Nginx","PostgreSQL"],
-  F:[["f8_1","Git : commits, branches, merge, rebase"],["f8_2","Conflits et pull requests"],["f8_3","Auto-test des 4 critères de fin des fondations"]],
-  R:[["s8_1","S8.1 Git : branches, PR, conflit résolu"],["s8_2","S8.2 Homelab NavMarket 4 VM en HTTPS"],["s8_3","S8.3 destroy puis up en moins de 15 min"],["s8_4","S8.4 Schéma réseau et README de lancement"],["s8_x","L'app ne joint plus la base","panne"]]},
- {n:9,t:"App 1 : TypeScript + API NestJS",tools:["TypeScript","NestJS","Prisma","PostgreSQL","Swagger"],
-  F:[["f9_1","TypeScript : types, interfaces, async/await"],["f9_2","NestJS : modules, contrôleurs, services, validation"],["f9_3","Prisma : schéma, migrations, données de démo"],["f9_4","Configuration par variables d'environnement (12-factor)"]],
-  R:[["s9_1","S9.1 API NestJS : products, orders, /health"],["s9_2","S9.2 PostgreSQL + migrations Prisma, données Navatech"],["s9_3","S9.3 .env.example documenté, aucun secret dans le code"]]},
- {n:10,t:"App 2 : front Next.js",tools:["Next.js","React","ESLint","Jest","Make","Nginx"],
-  F:[["f10_1","Next.js : pages, composants, routage"],["f10_2","Appeler l'API depuis le front"],["f10_3","ESLint et tests Jest"],["f10_4","Nginx : / vers le front, /api vers l'API"]],
-  R:[["s10_1","S10.1 Vitrine réécrite en Next.js, catalogue depuis l'API"],["s10_2","S10.2 Panier et commande enregistrée en base"],["s10_3","S10.3 make test vert, couverture API ≥ 70 %"],["s10_4","S10.4 Boutique complète derrière Nginx en HTTPS"],["s10_x","API démarrée avant la base, migration oubliée","panne"]]},
+ {n:1,t:"Linux 1: using it",tools:["Ubuntu 26.04 LTS","Ubuntu Server","Oracle Cloud","Bash","nano","vim","apt"],
+  F:[["f1_1","Linux workstation: Ubuntu 26.04 LTS installed as my main OS (dual boot) rather than in a VirtualBox or VMware VM, so that I work on Linux every day"],["f1_2","Filesystem hierarchy (/etc, /var, /home), navigation, files"],["f1_3","Editors: nano, then vim"],["f1_4","Permissions, users, groups, sudo, apt packages"],["f1_5","Create a free Oracle Cloud Always Free VM (or use Cloudflare Tunnel)"]],
+  R:[["s1_1","S1.1 First server, navmarket-srv01, fully updated"],["s1_2","S1.2 Accounts alice, bob, chloe and permissions on /srv/navmarket"],["s1_3","S1.3 NavMarket storefront served by Nginx"],["s1_4","S1.4 Bandit levels 0 to 10"],["s1_5","S1.5 Storefront live on my public VPS"]]},
+ {n:2,t:"Linux 2: administering it",tools:["systemd","journalctl","OpenSSH","cron","lsblk","grep","awk"],
+  F:[["f2_1","Processes and signals (ps, top, kill)"],["f2_2","systemd services and journalctl logs"],["f2_3","SSH and keys, cron"],["f2_4","Disks: lsblk, df, du, mount, fstab"],["f2_5","Pipes, grep, find, sed, awk"],["f2_6","Reading /var/log/auth.log"]],
+  R:[["s2_1","S2.1 SSH access with keys only"],["s2_2","S2.2 systemd service that restarts on its own"],["s2_3","S2.3 Nightly cron backup, 7 days retained"],["s2_4","S2.4 Disk added, mounted, filled, then diagnosed"],["s2_5","S2.5 Top IPs and 404s from the logs in a single command"],["s2_6","S2.6 Top 10 IPs attacking my VPS over SSH"],["s2_x","Unreadable Nginx config","incident"]]},
+ {n:3,t:"Networking 1: packets",tools:["ip","ipcalc","tcpdump","Wireshark","nftables","traceroute"],
+  F:[["f3_1","OSI and TCP/IP models"],["f3_2","MAC, IP, ARP, ICMP"],["f3_3","Netmasks, CIDR, subnet calculation"],["f3_4","Routing and gateways, TCP vs UDP, ports"]],
+  R:[["s3_1","S3.1 Addressing plan for 10.10.0.0/16"],["s3_2","S3.2 Linux router between 2 networks"],["s3_3","S3.3 Annotated packet capture (ARP, ICMP, TCP)"],["s3_4","S3.4 NAT: the private network reaches the Internet"]]},
+ {n:4,t:"Networking 2: services",tools:["dnsmasq","bind9","OpenSSL","Nginx","ufw","nmap","DuckDNS","certbot","fail2ban"],
+  F:[["f4_1","DNS, DHCP, NAT"],["f4_2","HTTP/HTTPS, TLS and certificates"],["f4_3","Firewalls: ufw, nftables"],["f4_4","Proxies and load balancing"],["f4_5","Troubleshooting: dig, curl -v, ss"],["f4_6","Let's Encrypt, certbot, fail2ban"]],
+  R:[["s4_1","S4.1 Internal DNS for navmarket.lan"],["s4_2","S4.2 Automatic DHCP"],["s4_3","S4.3 HTTPS with my own certificate authority"],["s4_4","S4.4 Firewall: only ports 22, 80, 443 open"],["s4_5","S4.5 Reverse proxy in front of 2 web servers"],["s4_6","S4.6 Real domain + Let's Encrypt HTTPS + fail2ban"],["s4_x","Name no longer resolves, wrong gateway","incident"]]},
+ {n:5,t:"Programming 1",tools:["Bash","shellcheck","Python 3"],
+  F:[["f5_1","Bash: variables, conditions, loops"],["f5_2","Bash: functions, arguments, exit codes"],["f5_3","Python: types, lists, dictionaries"],["f5_4","Python: functions, reading and writing files"]],
+  R:[["s5_1","S5.1 Idempotent deploy-storefront.sh, clean shellcheck"],["s5_2","S5.2 Bash healthcheck with an exit code"],["s5_3","S5.3 Navatech product inventory in Python"],["s5_4","S5.4 Log analysis in Python, JSON export"]]},
+ {n:6,t:"Programming 2",tools:["Python","venv","pip","requests","argparse","pytest","Exercism"],
+  F:[["f6_1","Modules, exceptions, classes (basics)"],["f6_2","venv and pip"],["f6_3","JSON and API calls with requests"],["f6_4","Testing with pytest"],["f6_5","One Exercism exercise a day"]],
+  R:[["s6_1","S6.1 Weather API script with error handling"],["s6_2","S6.2 navctl tool (status, backup, logs)"],["s6_3","S6.3 pytest tests, 80% coverage"],["s6_x","Malformed data handled cleanly","incident"]]},
+ {n:7,t:"Virtualization",tools:["VirtualBox","Proxmox VE","KVM","Vagrant"],
+  F:[["f7_1","Type 1 and type 2 hypervisors"],["f7_2","CPU, RAM, virtual disks and snapshots"],["f7_3","Virtual networks: NAT, bridge, host-only"],["f7_4","Automating VMs with Vagrant"],["f7_5","VMs vs containers"]],
+  R:[["s7_1","S7.1 NAT, bridge and host-only compared"],["s7_2","S7.2 Snapshot and restore in 2 min"],["s7_3","S7.3 Proxmox: template and clones"],["s7_4","S7.4 Vagrant provisions the storefront"]]},
+ {n:8,t:"Git and homelab",tools:["Git","GitHub","Vagrant","Nginx","PostgreSQL"],
+  F:[["f8_1","Git: commits, branches, merge, rebase"],["f8_2","Conflicts and pull requests"],["f8_3","Self-check against the 4 end-of-foundations criteria"]],
+  R:[["s8_1","S8.1 Git: branches, PR, conflict resolved"],["s8_2","S8.2 NavMarket homelab: 4 VMs over HTTPS"],["s8_3","S8.3 destroy, then up again in under 15 min"],["s8_4","S8.4 Network diagram and startup README"],["s8_x","The app can no longer reach the database","incident"]]},
+ {n:9,t:"App 1: TypeScript + NestJS API",tools:["TypeScript","NestJS","Prisma","PostgreSQL","Swagger"],
+  F:[["f9_1","TypeScript: types, interfaces, async/await"],["f9_2","NestJS: modules, controllers, services, validation"],["f9_3","Prisma: schema, migrations, seed data"],["f9_4","Configuration through environment variables (12-factor)"]],
+  R:[["s9_1","S9.1 NestJS API: products, orders, /health"],["s9_2","S9.2 PostgreSQL + Prisma migrations, Navatech data"],["s9_3","S9.3 Documented .env.example, no secrets in the code"]]},
+ {n:10,t:"App 2: Next.js front end",tools:["Next.js","React","ESLint","Jest","Make","Nginx"],
+  F:[["f10_1","Next.js: pages, components, routing"],["f10_2","Calling the API from the front end"],["f10_3","ESLint and Jest tests"],["f10_4","Nginx: / to the front end, /api to the API"]],
+  R:[["s10_1","S10.1 Storefront rewritten in Next.js, catalog served by the API"],["s10_2","S10.2 Cart and order saved to the database"],["s10_3","S10.3 make test passes, API coverage ≥ 70%"],["s10_4","S10.4 Complete shop behind Nginx over HTTPS"],["s10_x","API started before the database, forgotten migration","incident"]]},
  {n:11,t:"Docker",tools:["Docker","Docker Compose","Node.js","GHCR"],
-  F:[["f11_1","Images vs conteneurs, commandes de base"],["f11_2","Dockerfile, couches, cache"],["f11_3","Volumes et réseaux"],["f11_4","Multi-étapes, non-root, registres"]],
-  R:[["s11_1","S11.1 Next.js et NestJS conteneurisés, non-root, < 250 Mo"],["s11_2","S11.2 docker compose up : toute la boutique sur mon PC"],["s11_3","S11.3 Images v1.0.0 sur GitHub Container Registry"],["s11_4","S11.4 La boutique en conteneurs sur mon VPS en HTTPS"],["s11_x","Conteneur qui redémarre en boucle","panne"]]},
+  F:[["f11_1","Images vs containers, basic commands"],["f11_2","Dockerfile, layers, cache"],["f11_3","Volumes and networks"],["f11_4","Multi-stage builds, non-root users, registries"]],
+  R:[["s11_1","S11.1 Next.js and NestJS containerized, non-root, < 250 MB"],["s11_2","S11.2 docker compose up: the whole shop on my PC"],["s11_3","S11.3 v1.0.0 images on GitHub Container Registry"],["s11_4","S11.4 The containerized shop on my VPS over HTTPS"],["s11_x","Container stuck in a restart loop","incident"]]},
  {n:12,t:"CI/CD",tools:["GitHub Actions","Trivy","SSH","GHCR"],
-  F:[["f12_1","Workflows, jobs, déclencheurs"],["f12_2","Secrets, cache, matrices"],["f12_3","Déploiement continu par SSH"],["f12_4","Environnements, approbations, rollback"]],
-  R:[["s12_1","S12.1 CI : PR bloquée si un test casse"],["s12_2","S12.2 Scan Trivy dans le pipeline"],["s12_3","S12.3 Merge sur main déployé sur le VPS en < 10 min"],["s12_4","S12.4 Prod avec approbation et rollback"],["s12_j","Premières candidatures (5 par semaine)"]]},
- {n:13,t:"AWS 1 : les bases",tools:["Console AWS","IAM","S3","CloudFront","Skill Builder"],
-  F:[["f13_1","Responsabilité partagée, régions et AZ"],["f13_2","Facturation, budgets, compte sécurisé"],["f13_3","Révision Cloud Practitioner"]],
-  R:[["s13_1","S13.1 Compte AWS sécurisé et alerte budget"],["s13_2","S13.2 Vitrine S3 + CloudFront"],["s13_c","AWS Cloud Practitioner (CLF-C02)","cert"]]},
- {n:14,t:"AWS 2 : calcul et réseau",tools:["AWS CLI","EC2","VPC","IAM","Session Manager"],
-  F:[["f14_1","IAM : rôles, politiques, moindre privilège"],["f14_2","EC2, EBS, S3"],["f14_3","VPC, sous-réseaux, NAT, Security Groups, NACL"]],
-  R:[["s14_1","S14.1 EC2 lancée en CLI avec user-data"],["s14_2","S14.2 VPC NavMarket 2 AZ public/privé"],["s14_3","S14.3 Session Manager, port 22 fermé"]]},
- {n:15,t:"AWS 3 : dispo et données",tools:["ELB","Auto Scaling","Route 53","RDS","Lambda","EventBridge","CloudWatch"],
-  F:[["f15_1","ELB, Auto Scaling, Route 53"],["f15_2","RDS et DynamoDB"],["f15_3","Lambda, SQS/SNS, CloudWatch"]],
-  R:[["s15_1","S15.1 ALB + Auto Scaling : instance tuée, site intact"],["s15_2","S15.2 RDS privé"],["s15_3","S15.3 Alerte météo en Lambda planifiée"]]},
- {n:16,t:"AWS 4 : conteneurs + SAA",tools:["ECR","ECS Fargate","OIDC","Tutorials Dojo","Pricing Calculator"],
-  F:[["f16_1","ECR et ECS Fargate"],["f16_2","Connexion GitHub vers AWS par OIDC"],["f16_3","Examens blancs à 80 % et plus"]],
-  R:[["s16_1","S16.1 La boutique sur ECS Fargate + ALB + RDS"],["s16_2","S16.2 Pipeline S12 qui déploie sur AWS par OIDC"],["s16_3","S16.3 Production documentée et chiffrée"],["s16_x","ALB en 502 / 504","panne"],["s16_c","AWS Solutions Architect Associate (SAA-C03)","cert"]]},
+  F:[["f12_1","Workflows, jobs, triggers"],["f12_2","Secrets, caching, matrices"],["f12_3","Continuous deployment over SSH"],["f12_4","Environments, approvals, rollback"]],
+  R:[["s12_1","S12.1 CI: a PR is blocked when a test fails"],["s12_2","S12.2 Trivy scan in the pipeline"],["s12_3","S12.3 Merge to main deployed to the VPS in < 10 min"],["s12_4","S12.4 Production with approval and rollback"],["s12_j","First job applications (5 per week)"]]},
+ {n:13,t:"AWS 1: the basics",tools:["AWS Console","IAM","S3","CloudFront","Skill Builder"],
+  F:[["f13_1","Shared responsibility, Regions and Availability Zones"],["f13_2","Billing, budgets, securing the account"],["f13_3","Cloud Practitioner exam preparation"]],
+  R:[["s13_1","S13.1 Secured AWS account and budget alert"],["s13_2","S13.2 Storefront on S3 + CloudFront"],["s13_c","AWS Cloud Practitioner (CLF-C02)","cert"]]},
+ {n:14,t:"AWS 2: compute and networking",tools:["AWS CLI","EC2","VPC","IAM","Session Manager"],
+  F:[["f14_1","IAM: roles, policies, least privilege"],["f14_2","EC2, EBS, S3"],["f14_3","VPC, subnets, NAT, Security Groups, NACLs"]],
+  R:[["s14_1","S14.1 EC2 instance launched from the CLI with user data"],["s14_2","S14.2 NavMarket VPC across 2 AZs, public/private"],["s14_3","S14.3 Session Manager, port 22 closed"]]},
+ {n:15,t:"AWS 3: availability and data",tools:["ELB","Auto Scaling","Route 53","RDS","Lambda","EventBridge","CloudWatch"],
+  F:[["f15_1","ELB, Auto Scaling, Route 53"],["f15_2","RDS and DynamoDB"],["f15_3","Lambda, SQS/SNS, CloudWatch"]],
+  R:[["s15_1","S15.1 ALB + Auto Scaling: instance killed, site still up"],["s15_2","S15.2 Private RDS database"],["s15_3","S15.3 Weather alert as a scheduled Lambda"]]},
+ {n:16,t:"AWS 4: containers + SAA",tools:["ECR","ECS Fargate","OIDC","Tutorials Dojo","Pricing Calculator"],
+  F:[["f16_1","ECR and ECS Fargate"],["f16_2","Connecting GitHub to AWS with OIDC"],["f16_3","Practice exams at 80% or higher"]],
+  R:[["s16_1","S16.1 The shop on ECS Fargate + ALB + RDS"],["s16_2","S16.2 The S12 pipeline deploys to AWS via OIDC"],["s16_3","S16.3 Production documented and costed"],["s16_x","ALB returning 502 / 504","incident"],["s16_c","AWS Solutions Architect Associate (SAA-C03)","cert"]]},
  {n:17,t:"Terraform",tools:["Terraform","S3 backend"],
-  F:[["f17_1","Providers, ressources, variables, outputs"],["f17_2","State et data sources"],["f17_3","Modules et backend distant"]],
-  R:[["s17_1","S17.1 Le VPC réécrit en Terraform"],["s17_2","S17.2 Modules, state S3, staging et prod"]]},
- {n:18,t:"Terraform pro + Ansible",tools:["Terraform","GitHub Actions","Ansible"],
-  F:[["f18_1","Terraform dans la CI"],["f18_2","Révision Terraform Associate"],["f18_3","Ansible : inventaires, playbooks, rôles"]],
-  R:[["s18_1","S18.1 Terraform plan/apply dans la CI"],["s18_2","S18.2 Dérive détectée et corrigée"],["s18_3","S18.3 Homelab en playbooks Ansible idempotents"],["s18_c","HashiCorp Terraform Associate (004)","cert"]]},
+  F:[["f17_1","Providers, resources, variables, outputs"],["f17_2","State and data sources"],["f17_3","Modules and remote backend"]],
+  R:[["s17_1","S17.1 The VPC rewritten in Terraform"],["s17_2","S17.2 Modules, S3 state, staging and prod"]]},
+ {n:18,t:"Advanced Terraform + Ansible",tools:["Terraform","GitHub Actions","Ansible"],
+  F:[["f18_1","Terraform in CI"],["f18_2","Terraform Associate exam preparation"],["f18_3","Ansible: inventories, playbooks, roles"]],
+  R:[["s18_1","S18.1 Terraform plan/apply in CI"],["s18_2","S18.2 Drift detected and fixed"],["s18_3","S18.3 Homelab as idempotent Ansible playbooks"],["s18_c","HashiCorp Terraform Associate (004)","cert"]]},
  {n:19,t:"Kubernetes 1",tools:["kind","kubectl","k6"],
-  F:[["f19_1","Architecture : control plane et nœuds"],["f19_2","Pods, Deployments, Services, Namespaces"],["f19_3","ConfigMaps, Secrets, probes, limites"],["f19_4","Ingress et HPA"]],
-  R:[["s19_1","S19.1 API + PostgreSQL sur kind"],["s19_2","S19.2 Probes, secrets, limites"],["s19_3","S19.3 Ingress + HPA sous charge k6"]]},
- {n:20,t:"Kubernetes 2 : GitOps",tools:["Helm","Argo CD","Amazon EKS","Terraform"],
-  F:[["f20_1","Helm : charts et values"],["f20_2","GitOps et Argo CD"],["f20_3","Amazon EKS"]],
-  R:[["s20_1","S20.1 Chart Helm staging/prod"],["s20_2","S20.2 EKS + Argo CD en GitOps"]]},
- {n:21,t:"Kubernetes 3 : admin + CKA",tools:["kubeadm","etcd","RBAC","NetworkPolicy"],
-  F:[["f21_1","Installation avec kubeadm"],["f21_2","RBAC et NetworkPolicies"],["f21_3","Sauvegarde etcd, mises à jour"],["f21_4","Simulateurs d'examen CKA"]],
-  R:[["s21_1","S21.1 Cluster kubeadm sur 3 VM Vagrant"],["s21_2","S21.2 RBAC, NetworkPolicy, sauvegarde etcd"],["s21_3","S21.3 10 pannes réparées en moins de 2 h"],["s21_c","Certified Kubernetes Administrator (CKA)","cert"]]},
- {n:22,t:"Observabilité & sécurité",tools:["Prometheus","Grafana","Loki","Alertmanager","Checkov","gitleaks"],
-  F:[["f22_1","Les 4 signaux d'or"],["f22_2","Métriques, logs, traces"],["f22_3","Alerting utile"],["f22_4","DevSecOps : secrets et scans"]],
-  R:[["s22_1","S22.1 Dashboard Grafana 4 signaux d'or"],["s22_2","S22.2 Logs centralisés Loki"],["s22_3","S22.3 3 alertes déclenchées et reçues"],["s22_4","S22.4 Aucun secret en clair (gitleaks)"],["s22_j","Passer à 10 candidatures par semaine"]]},
- {n:23,t:"Projet final",tools:["Terraform","EKS","Argo CD","Grafana"],
-  F:[["f23_1","Livre SRE de Google : chapitre postmortems"],["f23_2","Préparer une démo technique de 3 minutes"]],
-  R:[["s23_1","S23.1 Toute la plateforme reconstruite en un jour"],["s23_2","S23.2 Incident simulé + postmortem"],["s23_3","S23.3 Vidéo démo et README vitrine"]]},
- {n:24,t:"Emploi",tools:["GitHub","LinkedIn","Réseau 3IL"],
-  F:[["f24_1","Questions d'entretien Linux, réseau, AWS, Kubernetes"],["f24_2","Concevoir une architecture au tableau"]],
-  R:[["s24_1","S24.1 GitHub, LinkedIn, CV relus"],["s24_2","S24.2 Entretien blanc de 45 min"],["s24_3","S24.3 Article « Comment j'ai construit NavMarket »"],["s24_j","Activer le réseau 3IL (alumni, entreprises de stage)"]]}
+  F:[["f19_1","Architecture: control plane and nodes"],["f19_2","Pods, Deployments, Services, Namespaces"],["f19_3","ConfigMaps, Secrets, probes, limits"],["f19_4","Ingress and HPA"]],
+  R:[["s19_1","S19.1 API + PostgreSQL on kind"],["s19_2","S19.2 Probes, secrets, limits"],["s19_3","S19.3 Ingress + HPA under k6 load"]]},
+ {n:20,t:"Kubernetes 2: GitOps",tools:["Helm","Argo CD","Amazon EKS","Terraform"],
+  F:[["f20_1","Helm: charts and values"],["f20_2","GitOps and Argo CD"],["f20_3","Amazon EKS"]],
+  R:[["s20_1","S20.1 Helm chart for staging/prod"],["s20_2","S20.2 EKS + Argo CD with GitOps"]]},
+ {n:21,t:"Kubernetes 3: admin + CKA",tools:["kubeadm","etcd","RBAC","NetworkPolicy"],
+  F:[["f21_1","Installing a cluster with kubeadm"],["f21_2","RBAC and NetworkPolicies"],["f21_3","etcd backup, upgrades"],["f21_4","CKA exam simulators"]],
+  R:[["s21_1","S21.1 kubeadm cluster on 3 Vagrant VMs"],["s21_2","S21.2 RBAC, NetworkPolicy, etcd backup"],["s21_3","S21.3 10 incidents fixed in under 2 h"],["s21_c","Certified Kubernetes Administrator (CKA)","cert"]]},
+ {n:22,t:"Observability & security",tools:["Prometheus","Grafana","Loki","Alertmanager","Checkov","gitleaks"],
+  F:[["f22_1","The 4 golden signals"],["f22_2","Metrics, logs, traces"],["f22_3","Alerting that matters"],["f22_4","DevSecOps: secrets and scanning"]],
+  R:[["s22_1","S22.1 Grafana dashboard for the 4 golden signals"],["s22_2","S22.2 Centralized logs with Loki"],["s22_3","S22.3 3 alerts fired and received"],["s22_4","S22.4 No plaintext secrets (gitleaks)"],["s22_j","Step up to 10 job applications per week"]]},
+ {n:23,t:"Final project",tools:["Terraform","EKS","Argo CD","Grafana"],
+  F:[["f23_1","Google SRE book: the postmortem chapter"],["f23_2","Preparing a 3-minute technical demo"]],
+  R:[["s23_1","S23.1 The whole platform rebuilt in one day"],["s23_2","S23.2 Simulated incident + postmortem"],["s23_3","S23.3 Demo video and showcase README"]]},
+ {n:24,t:"Job search",tools:["GitHub","LinkedIn","3IL network"],
+  F:[["f24_1","Interview questions: Linux, networking, AWS, Kubernetes"],["f24_2","Designing an architecture on a whiteboard"]],
+  R:[["s24_1","S24.1 GitHub, LinkedIn and CV reviewed"],["s24_2","S24.2 45-minute mock interview"],["s24_3","S24.3 Article: “How I built NavMarket”"],["s24_j","Reach out to the 3IL network (alumni, internship companies)"]]}
 ];
 const CERTS=[["s13_c","CLF-C02","Cloud Practitioner"],["s16_c","SAA-C03","Solutions Architect"],["s18_c","TF-004","Terraform Associate"],["s21_c","CKA","Kubernetes Admin"]];
 
@@ -265,8 +265,8 @@ let local=null;try{local=JSON.parse(localStorage.getItem(LS)||"null")}catch(e){}
 if(local&&local.updatedAt&&(!embedded.updatedAt||local.updatedAt>embedded.updatedAt))state=local;
 state.profile=state.profile||{};state.done=state.done||{};
 const isLocal=location.protocol==="file:";
-let edit=isLocal;let noAsk=false; //Le mode édition ne s'active que si la page est ouverte depuis votre PC.
-//||location.hash==="#edition" pour la modification partout, mais je préfère que ce soit volontaire
+let edit=isLocal;let noAsk=false; //Edit mode only turns on when the page is opened from my own computer (file://).
+//Adding ||location.hash==="#edit" would allow editing anywhere, but I prefer to keep it deliberate.
 const canFS=typeof window.showSaveFilePicker==="function";
 let fileHandle=null,lastSaved="",saveErr="";
 function idb(){return new Promise((res,rej)=>{const r=indexedDB.open("navmarket-roadmap",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
@@ -277,22 +277,22 @@ const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 const cnt=l=>l.filter(t=>state.done[t[0]]).length;
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
-const fr=d=>{if(!d)return"";const p=d.split("-");return p[2]+"/"+p[1]+"/"+p[0]};
+const fmtDate=d=>{if(!d)return"";const p=d.split("-");return new Date(+p[0],+p[1]-1,+p[2]).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})};
 const pending=()=>JSON.stringify({p:state.profile,d:state.done})!==JSON.stringify({p:embedded.profile||{},d:embedded.done||{}});
 function persist(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(LS,JSON.stringify(state))}catch(e){}}
 function buildFile(){const json=JSON.stringify(state).replace(/</g,"\\u003c");return ORIGINAL.replace(/(<script type="application\/json" id="state">)[\s\S]*?(<\/script>)/,(m,a,b)=>a+json+b)}
 async function writeFile(ask){
   saveErr="";
   try{
-    if(!fileHandle&&ask){fileHandle=await window.showSaveFilePicker({suggestedName:"index.html",types:[{description:"Page HTML",accept:{"text/html":[".html"]}}]});await idbSet("handle",fileHandle)}
+    if(!fileHandle&&ask){fileHandle=await window.showSaveFilePicker({suggestedName:"index.html",types:[{description:"HTML page",accept:{"text/html":[".html"]}}]});await idbSet("handle",fileHandle)}
     if(!fileHandle)return false;
     let perm=await fileHandle.queryPermission({mode:"readwrite"});
     if(perm!=="granted"&&ask)perm=await fileHandle.requestPermission({mode:"readwrite"});
     if(perm!=="granted")return false;
     const w=await fileHandle.createWritable();await w.write(buildFile());await w.close();
     embedded.profile=JSON.parse(JSON.stringify(state.profile));embedded.done=JSON.parse(JSON.stringify(state.done));embedded.updatedAt=state.updatedAt;
-    lastSaved=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});return true;
-  }catch(e){if(e&&e.name==="AbortError")noAsk=true;else saveErr="L'enregistrement a échoué ("+(e.message||e.name)+").";return false}
+    lastSaved=new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});return true;
+  }catch(e){if(e&&e.name==="AbortError")noAsk=true;else saveErr="Saving failed ("+(e.message||e.name)+").";return false}
   finally{statusMsg()}
 }
 function toggle(id){if(state.done[id])delete state.done[id];else state.done[id]=today();persist();render();if(canFS)writeFile(!noAsk||!!fileHandle)}
@@ -300,33 +300,33 @@ function statusMsg(){
   const bar=$("editbar"),m=$("editMsg");if(!bar)return;
   const p=pending();bar.classList.toggle("ok",!p&&!saveErr);
   $("btnSave").hidden=!canFS;
-  if(saveErr)m.textContent=saveErr+" Réessaie avec « Enregistrer dans le fichier ».";
-  else if(!canFS)m.textContent=p?"Ce navigateur ne peut pas écrire dans le fichier : clique sur « Télécharger une copie » et remplace ton index.html (ou ouvre la page avec Chrome ou Edge pour l'enregistrement automatique).":"Clique sur un élément pour le valider ou l'annuler.";
-  else if(!p)m.textContent=lastSaved?"Enregistré dans le fichier à "+lastSaved+". À la prochaine ouverture, ta progression sera là.":"Clique sur un élément pour le valider ou l'annuler : il s'enregistre directement dans ce fichier.";
-  else if(fileHandle)m.textContent="Modifications pas encore écrites dans le fichier : clique sur « Enregistrer dans le fichier ».";
-  else m.textContent="Première fois : clique sur « Enregistrer dans le fichier » et choisis ce même index.html (remplacer). Ensuite, chaque coche s'enregistre toute seule.";
+  if(saveErr)m.textContent=saveErr+" Try again with “Save to file”.";
+  else if(!canFS)m.textContent=p?"This browser cannot write to the file: click “Download a copy” and replace your index.html (or open the page in Chrome or Edge to save automatically).":"Click an item to mark it as done, or click again to undo.";
+  else if(!p)m.textContent=lastSaved?"Saved to the file at "+lastSaved+". Your progress will be there the next time you open it.":"Click an item to mark it as done, or click again to undo: it is saved straight into this file.";
+  else if(fileHandle)m.textContent="Changes not yet written to the file: click “Save to file”.";
+  else m.textContent="First time: click “Save to file” and choose this same index.html (replace it). After that, every tick is saved automatically.";
 }
 function profile(){
   const p=state.profile;
-  $("pName").textContent=p.name||"Parcours DevOps / Cloud AWS";
+  $("pName").textContent=p.name||"DevOps / AWS Cloud learning path";
   $("pHead").textContent=p.headline||"";
   const L=$("pLinks");L.textContent="";
   [["GitHub",p.github],["LinkedIn",p.linkedin]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=el("a",null,n);a.href=u;a.rel="noopener";L.append(a)}});
-  document.title=(p.name?p.name+" - ":"")+"Parcours DevOps / Cloud AWS";
+  document.title=(p.name?p.name+" - ":"")+"DevOps / AWS Cloud Learning Path";
 }
 function column(kind,list){
   const c=el("div",kind);
-  const h=el("div","colh");h.append(el("span",null,kind==="F"?"Formation":"Réalisation"),el("span","mono",cnt(list)+"/"+list.length));c.append(h);
+  const h=el("div","colh");h.append(el("span",null,kind==="F"?"Learning":"Labs"),el("span","mono",cnt(list)+"/"+list.length));c.append(h);
   list.forEach(t=>{
     const d=state.done[t[0]];
     const it=el(edit?"button":"div","item"+(d?" done":""));
     if(edit){it.type="button";it.setAttribute("aria-pressed",String(!!d));it.addEventListener("click",()=>toggle(t[0]))}
     const mk=el("span","mark",d?"✓":"");mk.setAttribute("aria-hidden","true");
-    const tx=el("span","txt",t[2]==="panne"?"Panne : "+t[1]:t[1]);
-    if(t[2]==="cert")tx.append(el("span","tag cert","certif"));
-    if(t[2]==="panne")tx.append(el("span","tag panne","provoquée et réparée"));
-    if(d)tx.append(el("span","date","validé le "+fr(d)));
-    else{const sr=el("span",null," (à faire)");sr.style.cssText="position:absolute;left:-9999px";tx.append(sr)}
+    const tx=el("span","txt",t[2]==="incident"?"Incident: "+t[1]:t[1]);
+    if(t[2]==="cert")tx.append(el("span","tag cert","cert"));
+    if(t[2]==="incident")tx.append(el("span","tag incident","caused & fixed"));
+    if(d)tx.append(el("span","date","completed "+fmtDate(d)));
+    else{const sr=el("span",null," (to do)");sr.style.cssText="position:absolute;left:-9999px";tx.append(sr)}
     it.append(mk,tx);c.append(it)});
   return c;
 }
@@ -334,19 +334,19 @@ function render(){
   profile();
   const allF=[],allR=[];W.forEach(w=>{allF.push(...w.F);allR.push(...w.R)});
   const nf=cnt(allF),nr=cnt(allR);
-  $("mF").textContent=nf+" / "+allF.length+" · "+Math.round(nf/allF.length*100)+" %";$("bF").style.width=(nf/allF.length*100)+"%";
-  $("mR").textContent=nr+" / "+allR.length+" · "+Math.round(nr/allR.length*100)+" %";$("bR").style.width=(nr/allR.length*100)+"%";
+  $("mF").textContent=nf+" / "+allF.length+" · "+Math.round(nf/allF.length*100)+"%";$("bF").style.width=(nf/allF.length*100)+"%";
+  $("mR").textContent=nr+" / "+allR.length+" · "+Math.round(nr/allR.length*100)+"%";$("bR").style.width=(nr/allR.length*100)+"%";
   const cur=W.find(w=>cnt(w.F)<w.F.length||cnt(w.R)<w.R.length);
-  $("now").textContent=cur?("En cours : séance "+cur.n+" - "+cur.t+"."):"Parcours terminé.";
+  $("now").textContent=cur?("In progress: session "+cur.n+" - "+cur.t+"."):"Learning path completed.";
   const certs=$("certs");certs.textContent="";
-  CERTS.forEach(c=>{const d=state.done[c[0]];const x=el("div","cert"+(d?" ok":""));x.append(el("b",null,c[1]),el("span",null,c[2]),el("span","st",d?"Obtenue le "+fr(d):"À venir"));certs.append(x)});
+  CERTS.forEach(c=>{const d=state.done[c[0]];const x=el("div","cert"+(d?" ok":""));x.append(el("b",null,c[1]),el("span",null,c[2]),el("span","st",d?"Earned "+fmtDate(d):"Upcoming"));certs.append(x)});
   const acq=$("acq");acq.textContent="";const seen=new Set();
   W.forEach(w=>{if(cnt(w.R)>0)w.tools.forEach(t=>{if(!seen.has(t)){seen.add(t);acq.append(el("span",null,t))}})});
-  if(!seen.size)acq.append(el("span",null,"Premiers outils à venir"));
+  if(!seen.size)acq.append(el("span",null,"First tools coming soon"));
   const strip=$("strip");strip.textContent="";
   W.forEach(w=>{const b=el("button","wkbtn");b.type="button";
     const pf=Math.round(cnt(w.F)/w.F.length*100),pr=Math.round(cnt(w.R)/w.R.length*100);
-    b.setAttribute("aria-label","Séance "+w.n+" : formation "+pf+" %, réalisation "+pr+" %");
+    b.setAttribute("aria-label","Session "+w.n+": learning "+pf+"%, labs "+pr+"%");
     const pair=el("span","pair");const f=el("span","col f"),r=el("span","col r");const fi=el("i"),ri=el("i");fi.style.height=pf+"%";ri.style.height=pr+"%";f.append(fi);r.append(ri);pair.append(f,r);
     b.append(pair,el("span","n","S"+w.n));
     b.addEventListener("click",()=>{const t=$("w"+w.n);if(t)t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
@@ -355,16 +355,16 @@ function render(){
   PH.forEach(p=>{
     const sec=el("section","phase");const ws=W.filter(w=>w.n>=p[1]&&w.n<=p[2]);
     const pf=[],pr=[];ws.forEach(w=>{pf.push(...w.F);pr.push(...w.R)});
-    const hd=el("div","phase-h");hd.append(el("h2",null,p[0]),el("span","mono","S"+p[1]+(p[2]>p[1]?"-"+p[2]:"")+" · formation "+cnt(pf)+"/"+pf.length+" · réalisation "+cnt(pr)+"/"+pr.length));sec.append(hd);
+    const hd=el("div","phase-h");hd.append(el("h2",null,p[0]),el("span","mono","S"+p[1]+(p[2]>p[1]?"-"+p[2]:"")+" · learning "+cnt(pf)+"/"+pf.length+" · labs "+cnt(pr)+"/"+pr.length));sec.append(hd);
     ws.forEach(w=>{
       const row=el("article","card week");row.id="w"+w.n;
-      const m=el("div","meta");m.append(el("div","wn","SÉANCE "+w.n),el("h3",null,w.t));
+      const m=el("div","meta");m.append(el("div","wn","SESSION "+w.n),el("h3",null,w.t));
       const tl=el("div","tools");w.tools.forEach(x=>tl.append(el("span",null,x)));m.append(tl);
       row.append(m,column("F",w.F),column("R",w.R));sec.append(row)});
     root.append(sec)});
   const u=state.updatedAt?new Date(state.updatedAt):null;
-  $("updated").textContent=u?("Dernière mise à jour : "+u.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})):"";
-  $("editbar").hidden=!edit;$("profileEdit").hidden=!edit;$("btnEdit").hidden=edit||!isLocal;;statusMsg();//Le bouton « Mode édition » est caché sur le site en ligne sinon mettre juste $("btnEdit").hidden=edit; pour modif locale et en ligne.
+  $("updated").textContent=u?("Last updated: "+u.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})):"";
+  $("editbar").hidden=!edit;$("profileEdit").hidden=!edit;$("btnEdit").hidden=edit||!isLocal;statusMsg();//The “Edit mode” button is hidden on the live site; use $("btnEdit").hidden=edit; instead to allow editing both locally and online.
   document.body.dataset.view=view;["B","F","R"].forEach(v=>$("v-"+v).setAttribute("aria-pressed",String(v===view)));
 }
 function setEdit(v){edit=v;if(!v)window.scrollTo(0,0);
@@ -381,7 +381,7 @@ $("btnDl").addEventListener("click",()=>{
   const blob=new Blob([buildFile()],{type:"text/html;charset=utf-8"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="index.html";document.body.append(a);a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
-  $("editMsg").textContent="Copie téléchargée. Remplace ton index.html par ce fichier.";
+  $("editMsg").textContent="Copy downloaded. Replace your index.html with this file.";
 });
 if(edit)setEdit(true);else render();
 if(canFS)idbGet("handle").then(h=>{if(h){fileHandle=h;statusMsg()}});
