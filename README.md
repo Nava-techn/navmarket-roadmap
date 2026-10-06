@@ -1,16 +1,16 @@
-# Parcours DevOps / Cloud AWS – NavMarket Ops
+# DevOps / AWS Cloud Learning Path – NavMarket Ops
 
-Ma progression réelle sur un parcours DevOps / Cloud AWS de 24 séances.
+My real progress on a 24-session DevOps / AWS Cloud learning path.
 
-- **Formation** : ce que j'apprends chaque séance, avec les outils.
-- **Réalisation** : les labs réalisés sur NavMarket, une boutique en ligne fictive (produits de chez Navatech) dont je construis et exploite toute la plateforme : Linux, réseau, virtualisation, Next.js / NestJS / PostgreSQL, Docker, CI/CD, AWS, Terraform, Kubernetes, observabilité.
+- **Learning**: what I learn in each session, with the tools involved.
+- **Labs**: the hands-on labs I build on NavMarket, a fictional online shop (selling Navatech products) whose entire platform I build and run: Linux, networking, virtualization, Next.js / NestJS / PostgreSQL, Docker, CI/CD, AWS, Terraform, Kubernetes, observability.
 
-Chaque élément validé affiche sa date de validation.
+Every completed item shows the date it was completed.
 
-**voir mon depot roadmap : https://github.com/Nava-techn/navmarket-roadmap**
+**Roadmap repository: https://github.com/Nava-techn/navmarket-roadmap**
 
-**Voir ma progression : https://nava-techn.github.io/navmarket-roadmap/**
+**My progress: https://nava-techn.github.io/navmarket-roadmap/**
 
-**voir mon guide sur les bases de linux au complet : https://nava-techn.github.io/navmarket-roadmap/guide_bases_linux_complet**
+**My complete guide to Linux basics: https://nava-techn.github.io/navmarket-roadmap/linux_basics_complete_guide**
 
-**voir le cours sur les fondamentaux de l'informatique de l'avènement de l'ordinateur jusqu'au cloud : https://nava-techn.github.io/navmarket-roadmap/Les_fondations_de_linformatique_du_materiel_au_cloud.pdf**
+**Course: the foundations of computing, from the first computers to the cloud: https://nava-techn.github.io/navmarket-roadmap/Foundations_of_computing_from_hardware_to_cloud.pdf**
